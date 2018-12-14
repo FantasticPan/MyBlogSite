@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class=""
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="baidu-site-verification" content="d4kcdwiGHw">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>[[${blogModel.blog.title}]]</title>
+    <meta name="author" content="李攀(18380321869@163.com)">
+    <meta name="keywords" content="Android打包,Cordova创建app,Cordova打包App,Cordova应用,Cordova学习教程,张亚东博客">
+    <meta name="description" content="APP开发之路第一篇：使用Cordova创建并打包一个Android平台的app应用" id="meta_description">
+    <link rel="canonical" href="detail.html">
+    <link href="/db/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/jquery-confirm/2.5.1/jquery-confirm.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/css/bootstrapValidator.min.css" rel="stylesheet">
+    <link href="/db/css/zhyd.core.css" rel="stylesheet" type="text/css">
+    <link href="/db/css/zhyd.comment.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="/css/editormd.preview.min.css"/>
+    <link rel="stylesheet" href="/css/editormd.min.css"/>
+</head>
+
+<body>
+<nav id="topmenu" class="navbar navbar-default navbar-fixed-top" style="opacity: 1;">
+    <div class="menu-box">
+        <div class="pull-left">
+            <ul class="list-unstyled list-inline">
+                <li><span id="currentTime">2018年04月11日 09时43分24秒 星期三</span></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="menu-topmenu-container pull-right">
+            <ul class="list-unstyled list-inline pull-left">
+                <li sec:authorize="isAnonymous()">
+                    <a href="/login" class="menu_a" data-toggle="tooltip" data-placement="bottom" data-original-title="登录">
+                        <i class="fa fa-sign-in"></i>登录</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
+                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-gg fa-fw"></i>写博客</a>
+                    <a th:href="@{'/admin/' + ${#authentication.name} + '/manager'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-fire fa-fw"></i>后台管理</a>
+                    <a th:href="@{/logout}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-sign-in"></i>退出</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<nav id="mainmenu" class="navbar navbar-default navbar-fixed-top" role="navigation" style="top: 30px; z-index: 998;">
+    <div class="menu-box">
+        <div class="navbar-header">
+            <span class="pull-right nav-search toggle-search" data-toggle="modal" data-target=".nav-search-box"><i
+                    class="fa fa-search"></i></span>
+            <a type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+               aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand logo" href="/"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="pull-left" style="line-height: 0.9;">
+                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/" data-original-title="写博客、记日志、闲聊扯淡鼓捣技术" data-toggle="tooltip" data-placement="bottom">Li Pan's 博客</a>
+                </h1>
+                <p class="site-description">写博客、记日志、闲聊扯淡鼓捣技术</p>
+            </div>
+            <ul class="nav navbar-nav ">
+                <li class="active">
+                    <a href="/" class="menu_a"><i class="fa fa-home"></i>首页</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle menu_a" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-code"></i>博客分类</a>
+                    <ul class="dropdown-menu" role="menu" th:each="s : ${blogModel.catalogs}">
+                        <li><a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章">[[${s}]]</a></li>
+                        <!--<li><a href="" title="">1</a></li>-->
+                        <!--<li><a href="" title="">1</a></li>-->
+                    </ul>
+                </li>
+                <!--<li>-->
+                <!--<a href="guestbook.html" class="menu_a"><i class="fa fa-comments-o"></i>留言板</a>-->
+                <!--</li>-->
+                <!--<li><span class="pull-right nav-search main-search" data-toggle="modal" data-target=".nav-search-box"><i class="fa fa-search"></i></span></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<img src="/db/img/default_article_cover.jpg" onerror="this.src='/db/img/default_article_cover.jpg'"
+     style="display: none;" id="cover-img">
+<div class="container custome-container">
+    <nav class="breadcrumb">
+        <a class="crumbs" title="" href="/" data-toggle="tooltip" data-placement="bottom"
+           data-original-title="返回首页"><i class="fa fa-home"></i>首页</a>
+        <i class="fa fa-angle-right"></i>
+        <a th:href="'/catalog/' + ${blogModel.blog.catalog}" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="点击查看该分类文章" th:text="${blogModel.blog.catalog}">后端技术</a>
+        <i class="fa fa-angle-right"></i>正文
+    </nav>
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+            <div class="blog-body overflow-initial fade-in">
+                <div class="article-flag">
+                    <span class="article-blockquote article-blockquote-green"></span>
+                    <span class="article-original article-original-green"><a href="detail.html" th:text="${blogModel.blog.category}">原创</a></span>
+                    <div class="blog-info-meta pull-right">
+                        <ul class="list-unstyled list-inline">
+                            <li><i class="fa fa-clock-o fa-fw"></i>发表于 [[${blogModel.blog.createTime}]]</li>
+                            <li><i class="fa fa-eye fa-fw"></i>
+                                <a class="pointer" data-original-title="89人浏览了该文章" data-toggle="tooltip" data-placement="bottom">阅读量 (<num>[[${blog.readSize}]]</num>)</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="blog-info overflow-initial">
+                    <div class="bottom-line">
+                        <h1 class="blog-info-title">
+                            <strong th:text="${blogModel.blog.title}">Cordova入门（一）创建android项目</strong>
+                        </h1>
+                    </div>
+                    <div class="blog-info-body">
+                        <div class="content editormd-preview-theme-dark" id="content"
+                             th:utext="${blogModel.blog.htmlContent}"></div>
+                    </div>
+                    <div class="separateline"><span>正文到此结束</span></div>
+                    <div id="social" style="margin-bottom: 45px;">
+                        <div class="social-main">
+									<span class="like">
+										<a href="javascript:;" data-id="92" title="点赞" id="submitVote"><i class="fa fa-thumbs-up"></i>赞 <i class="count"></i> </a>
+									</span>
+                            <div class="shang-p">
+                                <div class="shang-empty"><span></span></div>
+                                <span class="shang-s"><a onclick="javascript:;" style="cursor:pointer">文</a> </span>
+                            </div>
+                            <div class="share-sd">
+                                <span class="share-s"><a href="javascript:void(0)" id="share-s" title="感谢阅读"><i
+                                        class="fa fa-share-alt"></i>感谢阅读</a></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="article-footer overflow-initial">所属分类：
+                        <a th:href="'/catalog/' + ${blogModel.blog.catalog}" data-toggle="tooltip"
+                           data-placement="bottom" th:text="${blogModel.blog.catalog}">后端技术</a>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-body article-tag">
+                <div class="cat">
+                    <ul class="list-unstyled">
+                        <li>
+                            <strong>本文标签：</strong>
+                            <span th:each="tag : ${blogModel.blogTags}">
+                                <a th:href="'/tag/' + ${tag.tagName}" class="c-label" data-original-title="" data-toggle="tooltip" data-placement="bottom" target="_blank">[[${tag.tagName}]]</a>
+                            </span>
+                        </li>
+                        <li>
+                            <strong>版权声明：</strong> 本站原创文章，于[[${blogModel.blog.createTime}]]由
+                            <a href="https://www.lipan.xyz/" target="_blank" data-original-title="李攀"
+                               data-toggle="tooltip" data-placement="bottom"><strong>李攀</strong></a>发布，转载请注明出处
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 blog-sidebar">
+            <div class="sidebar-module article-module">
+                <h5 class="sidebar-title"><i class="fa fa-book icon"></i><strong>本文目录</strong> <i class="fa fa-close pull-right close-article-menu hide pointer"></i></h5>
+                <div id="article-menu" style="display: block;">
+                    <ul class="list-unstyled">
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-module">
+                <h5 class="sidebar-title"><i class="fa fa-tags icon"></i><strong>文章标签</strong></h5>
+                <ul class="list-unstyled list-inline">
+                    <li class="tag-li" th:each="tag : ${blogModel.tags}">
+                        <a class="btn btn-default btn-xs" th:href="'/tag/' + ${tag}" title=""
+                           data-toggle="tooltip" data-placement="bottom" data-original-title="Linux">
+                            [[${tag}]]
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clear"></div>
+            <div class="sidebar-module">
+                <h5 class="sidebar-title"><i class="fa fa-info icon"></i><strong>网站信息</strong></h5>
+                <ul class="ul-default">
+                    <li><i class="fa fa-file fa-fw"></i> 文章总数：[[${blogModel.info.articleNum}]] 篇</li>
+                    <li><i class="fa fa-tags fa-fw"></i> 标签总数：[[${blogModel.info.tagNum}]] 个</li>
+                    <li><i class="fa fa-folder-open fa-fw"></i> 分类总数：[[${blogModel.info.catalogNum}]] 个</li>
+                    <!--<li><i class="fa fa-comments fa-fw"></i> 留言数量：50 条</li>-->
+                    <!--<li><i class="fa fa-users fa-fw"></i> 在线人数：<span class="online">11</span>人</li>-->
+                    <li><i class="fa fa-calendar fa-fw"></i> 运行天数：[[${blogModel.info.runDays}]] 天</li>
+                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年04月02日22点</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="loading" style="display: none;">
+    <div class="filter"></div>
+    <div class="loader">
+        <div class="loading-1"></div>
+        <div class="loading-2">Loading...</div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="clear">
+        <p>
+            <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" title=""
+               data-toggle="tooltip" data-placement="bottom" rel="external nofollow" data-original-title="查看备案信息">鲁ICP备17054970号-1</a>
+        </p>
+        <p>Copyright©2016-2018 张亚东博客 保留所有权利 ·
+            <a href="http://tongji.baidu.com/web/welcome/ico?s=590226d2f4ffbf051442eb75f37333c9" target="_blank"
+               title="" data-toggle="tooltip" data-placement="right" rel="external nofollow"
+               data-original-title="点击查看Li Pan's 博客网站统计详情"><i class="fa fa-bar-chart-o fa-fw fa-spin"></i>网站统计</a>
+        </p>
+    </div>
+</footer>
+<a class="to-top" title="" data-toggle="tooltip" data-placement="bottom"
+   style="position: fixed; right: 25px; bottom: 50px; cursor: pointer; display: none;" data-original-title="点击返回顶部"></a>
+<script src="/js/jquery.min.js"></script>
+<script src="/lib/marked.min.js"></script>
+<script src="/lib/prettify.min.js"></script>
+<script src="/js/editormd.min.js"></script>
+<script type="text/javascript">
+    editormd.markdownToHTML("content");
+</script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-confirm/2.5.1/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/js-xss/0.3.3/xss.min.js"></script>
+<script type="text/javascript">
+    var appConfig = {
+        wwwPath: 'https://www.zhyd.me',
+        staticPath: 'https://static.zhyd.me/static'
+    }
+</script>
+<!--<script type="text/javascript" src="/db/js/wangEditor.min.js"></script>-->
+<script type="text/javascript" src="/db/js/zhyd.core.js"></script>
+<script type="text/javascript" src="/db/js/zhyd.js"></script>
+<!-- comment插件会请求服务器获取评论内容，静态示例页面中不需要 -->
+<!--<script type="text/javascript" src="/db/js/zhyd.comment.js"></script>-->
+<script src="https://v1.hitokoto.cn/?encode=js&c=d&select=%23hitokoto" defer></script>
+<script th:inline="javascript">
+    var blogId = [[${blogModel.blog.id}]];
+    var submitVoteUrl = '/' + [[${blogModel.blog.user.username}]] + '/submitVote/' + [[${blogModel.blog.id}]];
+</script>
+<script type="text/javascript" src="/js/vote.js"></script>
+</body>
+</html>

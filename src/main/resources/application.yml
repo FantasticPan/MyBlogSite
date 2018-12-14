@@ -1,0 +1,20 @@
+spring:
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: HTML
+  datasource:
+    username: root
+    password: 970622
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://119.29.233.28:3306/my_blog_site?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+
+#博客时间配置
+blog:
+  profile:
+    initial-date: 2018-12-01

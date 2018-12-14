@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tag-catalog</title>
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/assets/css/amazeui.tagsinput.css"/>
+    <style>
+        .am-form .am-tagsinput {
+            min-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="am-g">
+    <div class="am-u-md-8 am-u-md-centered">
+        <form class="am-form" action="/submit" method="post">
+            <div class="am-form-group">
+                <label for="tags">输入标签：</label>
+                <input id="tags" type="text" name="tags" th:value="${blogModel.tags}" data-role="tagsinput"/>
+            </div>
+            <div class="am-form-group">
+                <label for="image">输入博客图片：</label>
+                <input id="image" type="text" name="image"/>
+            </div>
+            <div class="am-form-group">
+                <label for="catalog">输入博客分类：</label>
+                <input id="catalog" type="text" name="catalog"/>
+            </div>
+            <div class="am-form-group">
+                <select name="category">
+                    <option>原创</option>
+                    <option>转载</option>
+                    <option>翻译</option>
+                </select>
+            </div>
+            <div class="am-align-right">
+                <input type="submit" class="am-btn am-btn-primary" value="submit"/>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/amazeui.tagsinput.min.js"></script>
+</body>
+</html>

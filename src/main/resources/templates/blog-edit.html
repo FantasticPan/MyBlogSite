@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Editor.md</title>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/editormd.min.css"/>
+
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+
+<div id="layout" class="am-u-md-centered am-g" th:object="${blogModel.blog}">
+    <form action="/publishBlog" class="am-form" method="post">
+        <input type="hidden" name="id" th:value="*{id}" id="id">
+        <div class="am-form-group">
+            <input class="am-form-field am-input-sm" type="text" name="title" th:value="*{title}" maxlength="100" placeholder="输入文章标题" autocomplete="off">
+        </div>
+        <div class="am-form-group">
+            <input class="am-form-field am-input-sm" type="text" name="summary" th:value="*{summary}" maxlength="100" placeholder="输入文章摘要" autocomplete="off">
+        </div>
+        <div class="am-form-group">
+            <button id="submit" class="am-btn am-btn-primary">发布</button>
+        </div>
+        <div class="editormd" id="content-editormd">
+            <textarea class="editormd-markdown-textarea" name="content-editormd-markdown-doc">[[*{content}]]</textarea>
+        </div>
+    </form>
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+
+    $(function () {
+        testEditor = editormd("content-editormd", {
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "/lib/",
+            // imageUpload : true,
+            // imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            // imageUploadURL : "/uploadFile",
+            saveHTMLToTextarea : true,
+            //下面这一行将使用dark主题
+            previewTheme : "dark"
+        });
+    });
+</script>
+</body>
+</html>
