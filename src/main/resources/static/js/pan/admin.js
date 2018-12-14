@@ -24,17 +24,17 @@ $(function () {
                 console.log(data);
                 for (var i in data) {
                     var article = $('<tr>' +
-                        '<td>' + data[i].id + '</td>' +
+                        '<td class="articleId">' + data[i].id + '</td>' +
                         '<td>' +
                         '<a>' + data[i].title + '</a>' +
                         '<br/>' +
                         '<small>' + '发布于' + data[i].createTime + '</small>' +
                         '</td>' +
                         '<td>' +
-                        '<button type="button" class="btn btn-success btn-xs">' + data[i].catalog + '</button>' +
+                        '<button type="button" class="btn btn-success btn-xs">' + data[i].category + '</button>' +
                         '</td>' +
                         '<td>' +
-                        '<button type="button" class="btn btn-success btn-xs">' + data[i].category + '</button>' +
+                        '<button type="button" class="btn btn-success btn-xs">' + data[i].catalog + '</button>' +
                         '</td>' +
                         '<td>' +
                         '<button type="button" class="btn btn-success btn-xs">' + data[i].readSize + '</button>' +
@@ -48,14 +48,16 @@ $(function () {
 
                     $("#articles").append(article);
 
-                    $(".btn-delete").eq(i).click(function(){
-                        if(confirm("确认删除？") === true){
-                            $(this).parents("tr").remove();
-                            $.get("/delete/" + data[i].id, {}, function (data) {
-                            });
-                        }
-                    });
+
                 }
+                $(".btn-delete").click(function () {
+                    var articleId = $(this).parents("tr").find(".articleId").html();
+                    if (confirm("确认删除？") === true) {
+                        $(this).parents("tr").remove();
+                        $.get("/delete/" + articleId, {}, function (data) {
+                        });
+                    }
+                });
 
             },
             error: function (error) {
