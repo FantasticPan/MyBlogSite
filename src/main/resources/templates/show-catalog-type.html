@@ -36,14 +36,13 @@
         <div class="menu-topmenu-container pull-right">
             <ul class="list-unstyled list-inline pull-left">
                 <li sec:authorize="isAnonymous()">
-                    <a href="/login" class="menu_a" data-toggle="tooltip" data-placement="bottom" data-original-title="登录">
-                        <i class="fa fa-sign-in"></i>登录</a>
+                    <a href="/login" class="menu_a" data-toggle="tooltip" data-placement="bottom" data-original-title="登录"><i class="fa fa-sign-in"></i>登录</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
-                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-gg fa-fw"></i>写博客</a>
-                    <a th:href="@{'/admin/' + ${#authentication.name} + '/manager'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-fire fa-fw"></i>后台管理</a>
-                    <a th:href="@{/logout}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-sign-in"></i>退出</a>
+                    <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
+                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-gg fa-fw"></i>写博客</a>
+                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom"><i class="fa fa-fire fa-fw"></i>后台管理</a>
+                    <a th:href="@{/logout}" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>退出</a>
                 </li>
             </ul>
         </div>
@@ -65,10 +64,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="pull-left" style="line-height: 0.9;">
-                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/"
-                                                                                    data-original-title="写博客、记日志、闲聊扯淡鼓捣技术"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="bottom">Li Pan's 博客</a>
+                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/" data-original-title="写博客、记日志、闲聊扯淡鼓捣技术" data-toggle="tooltip" data-placement="bottom">Li Pan's 博客</a>
                 </h1>
                 <p class="site-description">写博客、记日志、闲聊扯淡鼓捣技术</p>
             </div>
@@ -78,9 +74,12 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle menu_a" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-code"></i>博客分类</a>
-                    <ul class="dropdown-menu" role="menu" th:each="s : ${blogModel.catalogs}">
-                        <li><a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章">[[${s}]]</a></li>
+                        <i class="fa fa-code"></i>博客分类<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li th:each="s : ${blogModel.catalogs}">
+                            <a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章" aria-expanded="true" th:text="${s}">分类</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -146,23 +145,22 @@
                                     <a class="tag-icon" href="https://github.com/FantasticPan" title="点击查看我的github"
                                        target="_blank" rel="external nofollow"><i class="fa fa-github"></i></a>
                                 </li>
+                                <li class="tsina auto-shake">
+                                    <a class="tag-icon" href="https://blog.csdn.net/SWPU_Lipan" title="点击查看我的CSDN"
+                                       target="_blank" rel="external nofollow"><img style="width: 17px" src="/images/csdn.png"></a>
+                                </li>
                                 <li class="tqq auto-shake" data-container="body" data-toggle="popover"
                                     data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;"
-                                    data-original-title="" title="">
+                                    data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;">
                                     <a class="tag-icon" title="QQ" rel="external nofollow"><i class="fa fa-qq"></i></a>
                                 </li>
                                 <li class="weixin auto-shake" data-container="body" data-toggle="popover"
                                     data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;"
-                                    data-original-title="" title="">
+                                    data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;">
                                     <a class="tag-icon" title="微信" rel="external nofollow"><i class="fa fa-weixin"></i></a>
                                 </li>
-                                <li class="tsina auto-shake">
-                                    <a class="tag-icon" href="http://weibo.com/211230415" title="点击查看我的微博"
-                                       target="_blank" rel="external nofollow"><i class="fa fa-weibo"></i></a>
-                                </li>
                             </ul>
+                            <!-- 方案二：列表展示 -->
                             <ul class="list-unstyled" style="padding-left: 44px">
                                 <li><i class="fa fa-info-circle fa-fw"></i>博主：<small>李攀</small></li>
                                 <li><i class="fa fa-user-circle fa-fw"></i>职业：<small>码农</small></li>

@@ -19,7 +19,7 @@
     <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/css/bootstrapValidator.min.css" rel="stylesheet">
     <link href="/db/css/zhyd.core.css" rel="stylesheet" type="text/css">
-    <!--<link href="/db/css/zhyd.comment.css" rel="stylesheet" type="text/css">-->
+    <link href="/db/css/zhyd.comment.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -37,10 +37,10 @@
                     <a href="/login" class="menu_a" data-toggle="tooltip" data-placement="bottom" data-original-title="登录"><i class="fa fa-sign-in"></i>登录</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
-                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-gg fa-fw"></i>写博客</a>
-                    <a th:href="@{/admin}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-fire fa-fw"></i>后台管理</a>
-                    <a th:href="@{/logout}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="李攀"><i class="fa fa-sign-in"></i>退出</a>
+                    <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
+                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom" target="_blank"><i class="fa fa-gg fa-fw"></i>写博客</a>
+                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom" target="_blank"><i class="fa fa-fire fa-fw"></i>后台管理</a>
+                    <a th:href="@{/logout}" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>退出</a>
                 </li>
             </ul>
         </div>
@@ -49,8 +49,7 @@
 <nav id="mainmenu" class="navbar navbar-default navbar-fixed-top" role="navigation" style="top: 30px; z-index: 998;">
     <div class="menu-box">
         <div class="navbar-header">
-            <span class="pull-right nav-search toggle-search" data-toggle="modal" data-target=".nav-search-box"><i
-                    class="fa fa-search"></i></span>
+            <span class="pull-right nav-search toggle-search" data-toggle="modal" data-target=".nav-search-box"><i class="fa fa-search"></i></span>
             <a type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
                aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
@@ -71,9 +70,12 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle menu_a" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-code"></i>博客分类</a>
-                    <ul class="dropdown-menu" role="menu" th:each="s : ${blogModel.catalogs}">
-                        <li><a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章">[[${s}]]</a></li>
+                        <i class="fa fa-code"></i>博客分类<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li th:each="s : ${blogModel.catalogs}">
+                            <a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章" aria-expanded="true" th:text="${s}">分类</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -113,9 +115,8 @@
     </nav>
     <div class="row">
         <div class="col-sm-8 blog-main">
-            <div th:each="blog : ${blogModel.blogList}">
-
-                <article class="fade-in">
+            <div>
+                <article class="fade-in" th:each="blog : ${blogModel.blogList}">
                     <header class="entry-header">
                         <h2 class="entry-title">
                             <a th:href="'/blog/' + ${blog.id}" th:text="${blog.title}" rel="bookmark" title=""
@@ -134,8 +135,7 @@
 							</span>
                         <div class="clear"></div>
                         <span class="entry-more">
-								<a href="detail.html" rel="bookmark" title="" data-toggle="tooltip"
-                                   data-placement="bottom" data-original-title="点击查看">阅读全文</a>
+								<a href="detail.html" rel="bookmark" data-placement="bottom">阅读全文</a>
 							</span>
                     </div>
                 </article>
@@ -162,21 +162,19 @@
                                     <a class="tag-icon" href="https://github.com/FantasticPan" title="点击查看我的github"
                                        target="_blank" rel="external nofollow"><i class="fa fa-github"></i></a>
                                 </li>
+                                <li class="tsina auto-shake">
+                                    <a class="tag-icon" href="https://blog.csdn.net/SWPU_Lipan" title="点击查看我的CSDN"
+                                       target="_blank" rel="external nofollow"><img style="width: 17px" src="/images/csdn.png"></a>
+                                </li>
                                 <li class="tqq auto-shake" data-container="body" data-toggle="popover"
                                     data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;"
-                                    data-original-title="" title="">
+                                    data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;">
                                     <a class="tag-icon" title="QQ" rel="external nofollow"><i class="fa fa-qq"></i></a>
                                 </li>
                                 <li class="weixin auto-shake" data-container="body" data-toggle="popover"
                                     data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;"
-                                    data-original-title="" title="">
+                                    data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;">
                                     <a class="tag-icon" title="微信" rel="external nofollow"><i class="fa fa-weixin"></i></a>
-                                </li>
-                                <li class="tsina auto-shake">
-                                    <a class="tag-icon" href="http://weibo.com/211230415" title="点击查看我的微博"
-                                       target="_blank" rel="external nofollow"><i class="fa fa-weibo"></i></a>
                                 </li>
                             </ul>
                             <!-- 方案二：列表展示 -->
@@ -194,7 +192,7 @@
                 <h5 class="sidebar-title"><i class="fa fa-tags icon"></i><strong>文章标签</strong></h5>
                 <ul class="list-unstyled list-inline">
                     <li class="tag-li" th:each="tag : ${blogModel.tags}">
-                        <a class="btn btn-default btn-xs" th:href="'/tag/' + ${tag}" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Linux">
+                        <a class="btn btn-default btn-xs" th:href="'/tag/' + ${tag}" data-placement="bottom">
                             [[${tag}]]
                         </a>
                     </li>
@@ -210,7 +208,7 @@
                     <!--<li><i class="fa fa-comments fa-fw"></i> 留言数量：50 条</li>-->
                     <!--<li><i class="fa fa-users fa-fw"></i> 在线人数：<span class="online">11</span>人</li>-->
                     <li><i class="fa fa-calendar fa-fw"></i> 运行天数：[[${blogModel.info.runDays}]] 天</li>
-                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年04月02日22点</li>
+                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年12月01日22点</li>
                 </ul>
             </div>
         </div>

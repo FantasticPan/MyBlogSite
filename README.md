@@ -19,7 +19,8 @@
 2. druid 连接池
 3. 后台功能完善
 4. 前台界面美化
-4. 多用户<br/>
+4. 多用户
+5. 移除冗杂的前端文件<br/>
 ...
 ## 说明
 1. 本博客后台Java代码为自主开发完成，前台博客页面参考[yadong.zhang](https://gitee.com/yadong.zhang)的源博客项目[OneBlog](https://gitee.com/yadong.zhang/DBlog)，管理页面使用[Colorlib](https://colorlib.com/)提供的[管理模板](https://colorlib.com/wp/free-admin-templates/)[gentelella](https://colorlib.com/polygon/gentelella/index.html)

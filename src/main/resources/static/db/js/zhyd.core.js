@@ -453,42 +453,42 @@
     });
 
     /* 鼠标点击向上冒泡弹出提示动画 */
-    $.extend({
-        bubble: {
-            _tip: ['法制', '爱国', '敬业', '诚信', '友善', '富强', '民主', '文明', '和谐', '自由', '平等', '公正'],
-            init: function () {
-                var bubbleIndex = 0;
-                $('body').click(function (e) {
-                    bubbleIndex = bubbleIndex >= $.bubble._tip.length ? 0 : bubbleIndex;
-                    if (!e.originalEvent) {
-                        return;
-                    }
-                    var x = e.originalEvent.x || e.originalEvent.layerX || 0;
-                    var y = e.originalEvent.y || e.originalEvent.layerY || 0;
-                    var html = '<span style="position: fixed;z-index:9999;left: ' + x + 'px;top: ' + y + 'px;"></span>';
-                    var $box = $(html).appendTo($(this));
-                    $box.effectBubble({
-                        y: -100,
-                        className: 'thumb-bubble',
-                        fontSize: 0.5,
-                        content: '<i class="fa fa-smile-o"></i>' + $.bubble._tip[bubbleIndex]
-                    });
-                    setTimeout(function () {
-                        $box.remove();
-                    }, 1002);
-                    bubbleIndex++;
-                });
-            },
-            unbind: function (duration) {
-                $("body").unbind('click');
-                if (duration && !isNaN(duration = parseInt(duration))) {
-                    setTimeout(function () {
-                        $.bubble.init();
-                    }, duration);
-                }
-            }
-        }
-    });
+    // $.extend({
+    //     bubble: {
+    //         _tip: ['法制', '爱国', '敬业', '诚信', '友善', '富强', '民主', '文明', '和谐', '自由', '平等', '公正'],
+    //         init: function () {
+    //             var bubbleIndex = 0;
+    //             $('body').click(function (e) {
+    //                 bubbleIndex = bubbleIndex >= $.bubble._tip.length ? 0 : bubbleIndex;
+    //                 if (!e.originalEvent) {
+    //                     return;
+    //                 }
+    //                 var x = e.originalEvent.x || e.originalEvent.layerX || 0;
+    //                 var y = e.originalEvent.y || e.originalEvent.layerY || 0;
+    //                 var html = '<span style="position: fixed;z-index:9999;left: ' + x + 'px;top: ' + y + 'px;"></span>';
+    //                 var $box = $(html).appendTo($(this));
+    //                 $box.effectBubble({
+    //                     y: -100,
+    //                     className: 'thumb-bubble',
+    //                     fontSize: 0.5,
+    //                     content: '<i class="fa fa-smile-o"></i>' + $.bubble._tip[bubbleIndex]
+    //                 });
+    //                 setTimeout(function () {
+    //                     $box.remove();
+    //                 }, 1002);
+    //                 bubbleIndex++;
+    //             });
+    //         },
+    //         unbind: function (duration) {
+    //             $("body").unbind('click');
+    //             if (duration && !isNaN(duration = parseInt(duration))) {
+    //                 setTimeout(function () {
+    //                     $.bubble.init();
+    //                 }, duration);
+    //             }
+    //         }
+    //     }
+    // });
     /* 鼠标点击弹出提示动画 */
 
     $.fn.extend({
