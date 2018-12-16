@@ -3,6 +3,7 @@ package com.pan.blog.service.impl;
 import com.pan.blog.dao.SiteInfoRepository;
 import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.service.SiteInfoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -16,7 +17,8 @@ import java.util.List;
  * Created by FantasticPan on 2018/11/25.
  */
 @Service
-@CacheConfig(cacheNames = "blog")
+@Slf4j
+@CacheConfig(cacheNames = "siteInfo")
 public class SiteInfoServiceImpl implements SiteInfoService {
 
     @Autowired
@@ -26,12 +28,14 @@ public class SiteInfoServiceImpl implements SiteInfoService {
     @Override
     @CacheEvict(allEntries = true)
     public void saveSiteInfo(SiteInfo siteInfo) {
+        log.info("保存网站信息saveSiteInfo方法");
         siteInfoRepository.save(siteInfo);
     }
 
     @Override
     @Cacheable(key = "#root.methodName")
     public List<SiteInfo> findAll() {
+        log.info("获取网站信息findAll方法");
         return siteInfoRepository.findAll();
     }
 

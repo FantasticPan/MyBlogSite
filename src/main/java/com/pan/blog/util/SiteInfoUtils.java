@@ -25,17 +25,12 @@ public class SiteInfoUtils {
                                        List<String> catalogs,
                                        Set<String> catalogList) throws ParseException {
 
-
         //标签
-        //List<Tag> tags = tagService.findAllTags();
-        //Set<String> tagsList = new HashSet<>();
         for (Tag tag : tags) {
             tagsList.add(tag.getTagName());
         }
 
         //分类
-        //List<String> catalogs = blogService.findCatalog();
-        //Set<String> catalogList = new HashSet<>();
         catalogList.addAll(catalogs);
 
         //文章数

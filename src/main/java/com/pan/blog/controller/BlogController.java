@@ -89,7 +89,7 @@ public class BlogController {
         Blog blog = blogService.getBlogById(id);
 
         //在前端显示的某一的标签
-        List<Tag> blogTags = blog.getTags();
+        Set<Tag> blogTags = blog.getTags();
 
         //在前端显示的所有的标签
         List<Tag> tags = tagService.findAllTags();
@@ -242,7 +242,7 @@ public class BlogController {
                                    HttpServletRequest request) {
 
         Blog blog = (Blog) request.getSession().getAttribute("blog");
-        List<Tag> tagList = new ArrayList<>();
+        Set<Tag> tagList = new HashSet<>();
         User user = (User) userDetailsService.loadUserByUsername(SecurityUtils.getCurrentUsername());
         request.getSession().removeAttribute("blog");
 

@@ -27,9 +27,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Transactional
     @Override
-    @CacheEvict(allEntries = true)
+    @CacheEvict(value = "blogs", allEntries = true)
     public void saveBlog(Blog blog) {
-        //blogRepository.save(blog);
+        blogRepository.save(blog);
         log.info("进入saveBlog方法");
     }
 
@@ -60,18 +60,21 @@ public class BlogServiceImpl implements BlogService {
     @Override
     @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogsByTag(Tag tag) {
+        log.info("findBlogsByTag");
         return blogRepository.findBlogsByTags(tag);
     }
 
     @Override
     @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogByCatalog(String catalog) {
+        log.info("findBlogByCatalog");
         return blogRepository.findBlogsByCatalog(catalog);
     }
 
     @Override
     @Cacheable(key = "#root.methodName")
     public List<String> findCatalog() {
+        log.info("findCatalog");
         return blogRepository.findCatalog();
     }
 

@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Blog 实体
@@ -63,14 +63,10 @@ public class Blog implements Serializable {
     @Column(name = "voteSize", columnDefinition = "INT default 0")
     private Integer voteSize;    //点赞量
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "blog_tag", joinColumns = @JoinColumn(name = "blog_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
-    private List<Tag> tags;
-
-    //@OneToOne(cascade = {CascadeType.DETACH}, fetch = FetchType.LAZY)
-    //@JoinColumn(name = "catalog_id")
-    //private Catalog catalog;
+    private Set<Tag> tags;
 
     private String category;
     private String catalog;
@@ -86,7 +82,7 @@ public class Blog implements Serializable {
                 @Size(min = 2, max = 200) String summary,
                 @Size(min = 2) String content,
                 @Size(min = 2) String htmlContent,
-                List<Tag> tags,
+                Set<Tag> tags,
                 String image) {
         this.title = title;
         this.summary = summary;
