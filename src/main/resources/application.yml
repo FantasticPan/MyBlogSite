@@ -36,11 +36,14 @@ spring:
     open-in-view: true
 
   #redis配置
+  cache:
+    type: redis
   redis:
     database: 0
     host: localhost
     port: 6379
-    jedis:
+    #使用lettuce连接池
+    lettuce:
       pool:
         #最大连接数据库连接数,设 0 为没有限制
         max-active: 8

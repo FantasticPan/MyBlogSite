@@ -41,7 +41,7 @@
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
                     <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-gg fa-fw"></i>写博客</a>
-                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom"><i class="fa fa-fire fa-fw"></i>后台管理</a>
+                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom" target="_blank"><i class="fa fa-fire fa-fw"></i>后台管理</a>
                     <a th:href="@{/logout}" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>退出</a>
                 </li>
             </ul>
@@ -192,7 +192,8 @@
                     <!--<li><i class="fa fa-comments fa-fw"></i> 留言数量：50 条</li>-->
                     <!--<li><i class="fa fa-users fa-fw"></i> 在线人数：<span class="online">11</span>人</li>-->
                     <li><i class="fa fa-calendar fa-fw"></i> 运行天数：[[${blogModel.info.runDays}]] 天</li>
-                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年04月02日22点</li>
+                    <li><i class="fa fa-eye fa-fw"></i> 访问量：[[${blogModel.info.visitSize}]] 次</li>
+                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年12月01日22点</li>
                 </ul>
             </div>
         </div>

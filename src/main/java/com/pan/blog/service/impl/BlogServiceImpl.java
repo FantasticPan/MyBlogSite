@@ -4,7 +4,11 @@ import com.pan.blog.dao.BlogRepository;
 import com.pan.blog.entity.Blog;
 import com.pan.blog.entity.Tag;
 import com.pan.blog.service.BlogService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +18,8 @@ import java.util.List;
  * Created by FantasticPan on 2018/11/25.
  */
 @Service
+@Slf4j
+@CacheConfig(cacheNames = "blog") //为缓存注解指定cacheNames，注解可重定义
 public class BlogServiceImpl implements BlogService {
 
     @Autowired
@@ -21,13 +27,15 @@ public class BlogServiceImpl implements BlogService {
 
     @Transactional
     @Override
-    public Blog saveBlog(Blog blog) {
-
-        return blogRepository.save(blog);
+    @CacheEvict(allEntries = true)
+    public void saveBlog(Blog blog) {
+        //blogRepository.save(blog);
+        log.info("进入saveBlog方法");
     }
 
     @Transactional
     @Override
+    @CacheEvict(allEntries = true)
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
     }
@@ -38,7 +46,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    @Cacheable(key = "#root.methodName")
     public List<Blog> getAllBlog() {
+        log.info("进入getAllBlog方法");
         return blogRepository.findAll();
     }
 
@@ -48,16 +58,19 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogsByTag(Tag tag) {
         return blogRepository.findBlogsByTags(tag);
     }
 
     @Override
+    @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogByCatalog(String catalog) {
         return blogRepository.findBlogsByCatalog(catalog);
     }
 
     @Override
+    @Cacheable(key = "#root.methodName")
     public List<String> findCatalog() {
         return blogRepository.findCatalog();
     }
@@ -72,7 +85,7 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void voteSizeInIncrease(Long id) {
         Blog blog = this.getBlogById(id);
-        blog.setVoteSize(blog.getVoteSize()+1);
+        blog.setVoteSize(blog.getVoteSize() + 1);
         this.saveBlog(blog);
     }
 

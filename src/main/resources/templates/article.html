@@ -43,7 +43,7 @@
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
                     <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" title="" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-gg fa-fw"></i>写博客</a>
-                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom"><i class="fa fa-fire fa-fw"></i>后台管理</a>
+                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom" target="_blank"><i class="fa fa-fire fa-fw"></i>后台管理</a>
                     <a th:href="@{/logout}" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>退出</a>
                 </li>
             </ul>
