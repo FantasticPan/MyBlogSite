@@ -5,9 +5,6 @@ import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.service.SiteInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +15,6 @@ import java.util.List;
  */
 @Service
 @Slf4j
-@CacheConfig(cacheNames = "siteInfo")
 public class SiteInfoServiceImpl implements SiteInfoService {
 
     @Autowired
@@ -26,16 +22,12 @@ public class SiteInfoServiceImpl implements SiteInfoService {
 
     @Transactional
     @Override
-    @CacheEvict(allEntries = true)
     public void saveSiteInfo(SiteInfo siteInfo) {
-        log.info("保存网站信息saveSiteInfo方法");
         siteInfoRepository.save(siteInfo);
     }
 
     @Override
-    @Cacheable(key = "#root.methodName")
     public List<SiteInfo> findAll() {
-        log.info("获取网站信息findAll方法");
         return siteInfoRepository.findAll();
     }
 

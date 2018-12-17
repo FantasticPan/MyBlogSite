@@ -14,7 +14,7 @@ import java.util.Set;
 /**
  * Created by FantasticPan on 2018/12/9.
  */
-public class SiteInfoUtils {
+public class SiteInfoUtil {
 
     public static void initialSiteInfo(BlogService blogService,
                                        TagService tagService,
@@ -37,11 +37,11 @@ public class SiteInfoUtils {
         Long blogNum = blogService.blogNum();
 
         //运行天数
-        int runDays = DateUtils.dateBetweenIncludeToday(DateUtils.dateParse(initialDate, null), new Date());
+        int runDays = DateUtil.dateBetweenIncludeToday(DateUtil.dateParse(initialDate, null), new Date());
 
         List<SiteInfo> infoList = siteInfoService.findAll();
         if (infoList.isEmpty()) {
-            siteInfoService.saveSiteInfo(new SiteInfo(blogNum, tagsList.size(), catalogList.size(), runDays));
+            siteInfoService.saveSiteInfo(new SiteInfo(blogNum, tagsList.size(), catalogList.size(), runDays, 0L));
         } else {
             SiteInfo siteInfo = infoList.get(0);
             siteInfo.setArticleNum(blogService.blogNum());

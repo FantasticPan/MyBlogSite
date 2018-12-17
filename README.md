@@ -1,5 +1,5 @@
 # MyBlogSite
-:book:自己搭建的博客网站，细节功能待完善
+:book:自己搭建的[博客网站](http://www.lipan.xyz)，细节功能待完善
 ## 开发工具
 1. IDE：IDEA<br/>
 2. java -version：1.8
@@ -15,7 +15,7 @@
 ![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214132021.png)
 ![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214132036.png)
 ## 待完善
-- [x] redis 缓存
+- [ ] redis 缓存
 - [x] druid 连接池
 - [ ] 后台功能完善
 - [ ] 前台界面美化

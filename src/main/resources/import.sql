@@ -1,4 +1,4 @@
-INSERT INTO user (id, username, password) VALUES (1, 'FantasticPan', '$2a$10$03OM6tJ7Ea5xNZ4jpibgM.7VtIZPQZ4UfUWxVkqf3G1KFPVZOY2gG');
+INSERT INTO user (id, username, password) VALUES (1, '李攀', '$2a$10$ZR1gnlXRsnYtSxyxiQwG3.9uki3SloZiyx.xHhOQ7nkCNw6LN/0Re');
 
 INSERT INTO authority (id, role) VALUES (1, 'ROLE_ADMIN');
 INSERT INTO authority (id, role) VALUES (2, 'ROLE_USER');

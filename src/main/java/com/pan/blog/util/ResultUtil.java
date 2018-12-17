@@ -5,7 +5,7 @@ import org.springframework.web.servlet.ModelAndView;
 /**
  * Created by FantasticPan on 2018/12/6.
  */
-public class ResultUtils {
+public class ResultUtil {
 
     public static ModelAndView view(String view) {
         return new ModelAndView(view);

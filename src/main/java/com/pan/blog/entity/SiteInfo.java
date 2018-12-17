@@ -22,16 +22,16 @@ public class SiteInfo implements Serializable {
     private int tagNum;
     private int catalogNum;
     private int runDays;
-    @Column(columnDefinition = "BIGINT default 0")
     private Long visitSize;
 
     public SiteInfo() {
     }
 
-    public SiteInfo(Long articleNum, int tagNum, int catalogNum, int runDays) {
+    public SiteInfo(Long articleNum, int tagNum, int catalogNum, int runDays,Long visitSize) {
         this.articleNum = articleNum;
         this.tagNum = tagNum;
         this.catalogNum = catalogNum;
         this.runDays = runDays;
+        this.visitSize = visitSize;
     }
 }

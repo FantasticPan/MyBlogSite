@@ -2064,8 +2064,17 @@ nav a:first-child .meta-nav {
     .navbar-toggle {
         padding: 9px 0;
         margin-right: 0;
+        margin-top: -35px;
     }
 
+    .navbar-header h1{
+        display: block !important;
+    }
+
+    .navbar-header{
+        height: 55px !important;
+        overflow: hidden;
+    }
     .container {
         width: 100% !important;
     }

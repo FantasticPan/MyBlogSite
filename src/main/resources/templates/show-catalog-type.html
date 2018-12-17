@@ -10,16 +10,13 @@
     <title>Li Pan's 博客</title>
     <meta name="author" content="李攀(18380321869@163.com)">
     <meta name="keywords" content="博客,程序猿,程序员,后端开发,软件开发,WEB开发,Java攻城狮,全栈工程师,原创博客,个人原创网站,个人技术博客">
-    <meta name="description" content="这是一个程序员的个人技术博客，旨在分享工作和学习中用到的技术、遇到的疑难知识点，也为了备战自己的人生。心之所向，无所不能。"
-          id="meta_description">
+    <meta name="description" content="这是一个程序员的个人技术博客，旨在分享工作和学习中用到的技术、遇到的疑难知识点，也为了备战自己的人生。心之所向，无所不能。" id="meta_description">
     <link rel="canonical" href="https://www.lipan.xyz/">
-    <link href="/db/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery-confirm/2.5.1/jquery-confirm.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/css/bootstrapValidator.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/css/bootstrapValidator.min.css" rel="stylesheet">
     <link href="/db/css/zhyd.core.css" rel="stylesheet" type="text/css">
     <link href="/db/css/zhyd.comment.css" rel="stylesheet" type="text/css">
 </head>
@@ -36,7 +33,7 @@
         <div class="menu-topmenu-container pull-right">
             <ul class="list-unstyled list-inline pull-left">
                 <li sec:authorize="isAnonymous()">
-                    <a href="/login" class="menu_a" data-toggle="tooltip" data-placement="bottom" data-original-title="登录"><i class="fa fa-sign-in"></i>登录</a>
+                    <a href="/login" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>登录</a>
                 </li>
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
@@ -51,10 +48,8 @@
 <nav id="mainmenu" class="navbar navbar-default navbar-fixed-top" role="navigation" style="top: 30px; z-index: 998;">
     <div class="menu-box">
         <div class="navbar-header">
-            <span class="pull-right nav-search toggle-search" data-toggle="modal" data-target=".nav-search-box"><i
-                    class="fa fa-search"></i></span>
-            <a type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-               aria-expanded="false" aria-controls="navbar">
+            <h1 style="font-size: 20px;font-weight: 700;display: none" class="auto-shake"><a href="/" data-placement="bottom">Li Pan's 博客</a></h1>
+            <a type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -64,8 +59,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <div class="pull-left" style="line-height: 0.9;">
-                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/" data-original-title="写博客、记日志、闲聊扯淡鼓捣技术" data-toggle="tooltip" data-placement="bottom">Li Pan's 博客</a>
-                </h1>
+                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/" data-placement="bottom">Li Pan's 博客</a></h1>
                 <p class="site-description">写博客、记日志、闲聊扯淡鼓捣技术</p>
             </div>
             <ul class="nav navbar-nav ">
@@ -89,11 +83,10 @@
 <div class="container custome-container">
 
     <nav class="breadcrumb">
-        <a class="crumbs" title="" href="/" data-toggle="tooltip" data-placement="bottom"
-           data-original-title="返回首页"><i class="fa fa-home"></i>首页</a>
+        <a class="crumbs" title="" href="/" data-placement="bottom"><i class="fa fa-home"></i>首页</a>
         <i class="fa fa-angle-right"></i>
         <span th:text="${blogModel.type}">分类</span><i class="fa fa-angle-right"></i>
-        <a th:href="'/catalog/' + ${blogModel.name}" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="点击查看该分类文章" th:text="${blogModel.name}">后端技术</a>
+        <a th:href="'/catalog/' + ${blogModel.name}" title="点击查看该分类文章" data-placement="bottom" th:text="${blogModel.name}">后端技术</a>
     </nav>
 
     <div class="row">
@@ -103,8 +96,7 @@
                 <article class="fade-in">
                     <header class="entry-header">
                         <h2 class="entry-title">
-                            <a th:href="'/blog/' + ${blog.id}" th:text="${blog.title}" rel="bookmark" title=""
-                               data-toggle="tooltip" data-placement="bottom" data-original-title="点击查看">Cordova入门（一）创建android项目</a>
+                            <a th:href="'/blog/' + ${blog.id}" th:text="${blog.title}" rel="bookmark" title="点击查看" data-placement="bottom">Cordova入门（一）创建android项目</a>
                         </h2>
                     </header>
                     <div class="entry-content">
@@ -113,12 +105,12 @@
                         </div>
                         <span class="title-l"></span>
                         <span class="entry-meta">
-								<span class="date" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="文章发表日期" th:text="${blog.createTime}"><i class="fa fa-calendar-o fa-fw"></i>2018-12-01</span>
-								<span class="views" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="文章阅读次数"><i class="fa fa-eye fa-fw"></i>浏览([[${blog.readSize}]])</span>
+								<span class="date" title="文章发表日期" data-placement="bottom" th:text="${blog.createTime}"><i class="fa fa-calendar-o fa-fw"></i>2018-12-01</span>
+								<span class="views" title="文章阅读次数" data-placement="bottom"><i class="fa fa-eye fa-fw"></i>浏览([[${blog.readSize}]])</span>
 							</span>
                         <div class="clear"></div>
                         <span class="entry-more">
-								<a href="detail.html" rel="bookmark" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="点击查看文章详情">阅读全文</a>
+								<a th:href="'/blog/' + ${blog.id}" rel="bookmark" title="点击查看文章详情" data-placement="bottom">阅读全文</a>
                         </span>
                     </div>
                 </article>
@@ -176,7 +168,7 @@
                 <h5 class="sidebar-title"><i class="fa fa-tags icon"></i><strong>文章标签</strong></h5>
                 <ul class="list-unstyled list-inline">
                     <li class="tag-li" th:each="tag : ${blogModel.tags}">
-                        <a class="btn btn-default btn-xs" th:href="'/tag/' + ${tag}" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Linux">
+                        <a class="btn btn-default btn-xs" th:href="'/tag/' + ${tag}" th:title="${tag}" data-placement="bottom">
                             [[${tag}]]
                         </a>
                     </li>
@@ -208,21 +200,12 @@
         <div class="loading-2">Loading...</div>
     </div>
 </div>
-<footer class="footer">
-    <div class="clear">
-        <p>
-            <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" title=""
-               data-toggle="tooltip" data-placement="bottom" rel="external nofollow" data-original-title="查看备案信息">鲁ICP备17054970号-1</a>
-        </p>
-        <p>Copyright©2016-2018 张亚东博客 保留所有权利 ·
-            <a href="http://tongji.baidu.com/web/welcome/ico?s=590226d2f4ffbf051442eb75f37333c9" target="_blank"
-               title="" data-toggle="tooltip" data-placement="right" rel="external nofollow"
-               data-original-title="点击查看Li Pan's 博客网站统计详情"><i class="fa fa-bar-chart-o fa-fw fa-spin"></i>网站统计</a>
-        </p>
+<footer>
+    <div style="padding-top: 15px" align="center">
+        <p>© · 2018 <a href="http://www.lipan.xyz">Li Pan's 博客 </a>版权所有</p>
     </div>
 </footer>
-<a class="to-top" title="" data-toggle="tooltip" data-placement="bottom"
-   style="position: fixed; right: 25px; bottom: 50px; cursor: pointer; display: none;" data-original-title="点击返回顶部"></a>
+<a class="to-top" title="点击返回顶部" data-placement="bottom" style="position: fixed; right: 25px; bottom: 50px; cursor: pointer; display: none;"></a>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
@@ -230,12 +213,6 @@
 <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery.bootstrapvalidator/0.5.1/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/js-xss/0.3.3/xss.min.js"></script>
-<script type="text/javascript">
-    var appConfig = {
-        wwwPath: 'https://www.zhyd.me',
-        staticPath: 'https://static.zhyd.me/static'
-    }
-</script>
 <script type="text/javascript" src="/db/js/wangEditor.min.js"></script>
 <script type="text/javascript" src="/db/js/zhyd.core.js"></script>
 <script type="text/javascript" src="/db/js/zhyd.js"></script>

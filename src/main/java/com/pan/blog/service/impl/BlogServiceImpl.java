@@ -6,9 +6,7 @@ import com.pan.blog.entity.Tag;
 import com.pan.blog.service.BlogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +17,6 @@ import java.util.List;
  */
 @Service
 @Slf4j
-@CacheConfig(cacheNames = "blog") //为缓存注解指定cacheNames，注解可重定义
 public class BlogServiceImpl implements BlogService {
 
     @Autowired
@@ -27,15 +24,12 @@ public class BlogServiceImpl implements BlogService {
 
     @Transactional
     @Override
-    @CacheEvict(value = "blogs", allEntries = true)
     public void saveBlog(Blog blog) {
         blogRepository.save(blog);
-        log.info("进入saveBlog方法");
     }
 
     @Transactional
     @Override
-    @CacheEvict(allEntries = true)
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
     }
@@ -46,10 +40,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Cacheable(key = "#root.methodName")
     public List<Blog> getAllBlog() {
-        log.info("进入getAllBlog方法");
-        return blogRepository.findAll();
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        return blogRepository.findAll(sort);
     }
 
     @Override
@@ -58,23 +51,19 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogsByTag(Tag tag) {
-        log.info("findBlogsByTag");
-        return blogRepository.findBlogsByTags(tag);
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        return blogRepository.findBlogsByTags(tag, sort);
     }
 
     @Override
-    @Cacheable(key = "#root.methodName")
     public List<Blog> findBlogByCatalog(String catalog) {
-        log.info("findBlogByCatalog");
-        return blogRepository.findBlogsByCatalog(catalog);
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        return blogRepository.findBlogsByCatalog(catalog, sort);
     }
 
     @Override
-    @Cacheable(key = "#root.methodName")
     public List<String> findCatalog() {
-        log.info("findCatalog");
         return blogRepository.findCatalog();
     }
 

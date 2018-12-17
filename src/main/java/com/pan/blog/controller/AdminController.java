@@ -2,7 +2,7 @@ package com.pan.blog.controller;
 
 import com.pan.blog.entity.Blog;
 import com.pan.blog.service.BlogService;
-import com.pan.blog.util.ResultUtils;
+import com.pan.blog.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,9 +28,14 @@ public class AdminController {
     public ModelAndView index(Model model) {
         List<Blog> blogList = blogService.getAllBlog();
         model.addAttribute("blogList", blogList);
-        return ResultUtils.view("admin/index", "blogModel", model);
+        return ResultUtil.view("admin/index", "blogModel", model);
     }
 
+    /**
+     * 接受ajax请求
+     *
+     * @return
+     */
     @GetMapping("/getAllArticle")
     @ResponseBody
     public List<Blog> getAllArticle() {

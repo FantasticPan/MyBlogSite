@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by FantasticPan on 2018/12/10.
  */
-public class IpUtils {
+public class IpUtil {
 
     public static String getRealIp(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");

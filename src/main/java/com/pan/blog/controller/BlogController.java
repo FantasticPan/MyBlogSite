@@ -7,9 +7,9 @@ import com.pan.blog.entity.User;
 import com.pan.blog.service.BlogService;
 import com.pan.blog.service.SiteInfoService;
 import com.pan.blog.service.TagService;
-import com.pan.blog.util.DateUtils;
-import com.pan.blog.util.ResultUtils;
-import com.pan.blog.util.SecurityUtils;
+import com.pan.blog.util.DateUtil;
+import com.pan.blog.util.ResultUtil;
+import com.pan.blog.util.SecurityUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +53,7 @@ public class BlogController {
         model.addAttribute("user", user);
         model.addAttribute("blog", new Blog(null, null, null, null, null, null));
 
-        return ResultUtils.view("blog-edit", "blogModel", model);
+        return ResultUtil.view("blog-edit", "blogModel", model);
     }
 
     @GetMapping({"/{username}/blog/edit/{id}"})
@@ -66,7 +66,7 @@ public class BlogController {
         model.addAttribute("user", user);
         model.addAttribute("blog", blogService.getBlogById(id));
 
-        return ResultUtils.view("blog-edit", "blogModel", model);
+        return ResultUtil.view("blog-edit", "blogModel", model);
     }
 
     @GetMapping("/blog/{id}")
@@ -108,7 +108,7 @@ public class BlogController {
         model.addAttribute("info", siteInfo.get(0));
         model.addAttribute("catalogs", catalogList);
 
-        return ResultUtils.view("article", "blogModel", model);
+        return ResultUtil.view("article", "blogModel", model);
     }
 
     /**
@@ -143,7 +143,7 @@ public class BlogController {
         model.addAttribute("name", catalog);
         model.addAttribute("catalogs", catalogList);
 
-        return ResultUtils.view("show-catalog-type", "blogModel", model);
+        return ResultUtil.view("show-catalog-type", "blogModel", model);
     }
 
     /**
@@ -180,7 +180,7 @@ public class BlogController {
         model.addAttribute("name", tagName);
         model.addAttribute("catalogs", catalogList);
 
-        return ResultUtils.view("show-catalog-type", "blogModel", model);
+        return ResultUtil.view("show-catalog-type", "blogModel", model);
     }
 
     /**
@@ -193,7 +193,6 @@ public class BlogController {
     @ResponseBody
     public void deleteBlog(@PathVariable("id") Long id) {
         blogService.deleteBlog(id);
-        //return ResultUtils.redirect("/");
     }
 
     @PostMapping("/publishBlog")
@@ -231,7 +230,7 @@ public class BlogController {
             model.addAttribute("tags", StringUtils.join(tags, ","));
         }
 
-        return ResultUtils.view("tag-catalog", "blogModel", model);
+        return ResultUtil.view("tag-catalog", "blogModel", model);
     }
 
     @PostMapping("/submit")
@@ -243,7 +242,7 @@ public class BlogController {
 
         Blog blog = (Blog) request.getSession().getAttribute("blog");
         Set<Tag> tagList = new HashSet<>();
-        User user = (User) userDetailsService.loadUserByUsername(SecurityUtils.getCurrentUsername());
+        User user = (User) userDetailsService.loadUserByUsername(SecurityUtil.getCurrentUsername());
         request.getSession().removeAttribute("blog");
 
         //博客判断，存在更新，不存在保存
@@ -262,7 +261,7 @@ public class BlogController {
             }
 
             blog.setUser(user);
-            blog.setCreateTime(DateUtils.dateTimeToDateString(new Date()));
+            blog.setCreateTime(DateUtil.dateTimeToDateString(new Date()));
             blog.setTags(tagList);
             blog.setCatalog(catalog);
             blog.setCategory(category);
@@ -305,7 +304,7 @@ public class BlogController {
             }
         }
 
-        return ResultUtils.redirect("/");
+        return ResultUtil.redirect("/");
     }
 
     /**

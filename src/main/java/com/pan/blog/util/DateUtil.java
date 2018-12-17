@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * Created by FantasticPan on 2018/12/7.
  */
-public class DateUtils {
+public class DateUtil {
 
     public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String MINUTE_PATTERN = "yyyy-MM-dd HH:mm";
@@ -31,7 +31,7 @@ public class DateUtils {
      */
     public static String dateFormat(Date date, String pattern) {
         if (StringUtils.isBlank(pattern)) {
-            pattern = DateUtils.DATE_PATTERN;
+            pattern = DateUtil.DATE_PATTERN;
 
         }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
@@ -48,7 +48,7 @@ public class DateUtils {
      */
     public static Date dateParse(String dateTimeString, String pattern) throws ParseException {
         if (StringUtils.isBlank(pattern)) {
-            pattern = DateUtils.DATE_PATTERN;
+            pattern = DateUtil.DATE_PATTERN;
         }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return sdf.parse(dateTimeString);
@@ -61,7 +61,7 @@ public class DateUtils {
      * @return
      */
     public static String dateTimeToDateString(Date dateTime) {
-        String dateTimeString = DateUtils.dateFormat(dateTime, DateUtils.DATE_TIME_PATTERN);
+        String dateTimeString = DateUtil.dateFormat(dateTime, DateUtil.DATE_TIME_PATTERN);
         return dateTimeString.substring(0, 10);
     }
 
