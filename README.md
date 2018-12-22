@@ -1,5 +1,5 @@
 # MyBlogSite
-:book:自己搭建的[博客网站](http://www.lipan.xyz)，细节功能待完善
+:book:自己搭建的[博客网站（www.lipan.xyz）](http://www.lipan.xyz)，细节功能待完善
 ## 开发工具
 1. IDE：IDEA
 2. java -version：1.8

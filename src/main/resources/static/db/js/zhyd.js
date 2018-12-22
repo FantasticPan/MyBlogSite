@@ -115,26 +115,26 @@ function initScrollMenu() {
         }
     }
 }
-var PaymentUtils = window.payment || {
-    config: [{url: appConfig.staticPath + '/img/alipay_nb.jpg', desc: '支付宝转账'},{url: appConfig.staticPath + '/img/wechat_nb.jpg', desc: '微信转账'}],
-    show : function () {
-        $("#reward").modal('show');
-        this.change(0);
-        $("#reward input").on('ifChecked', function(event){
-            var index = $(this).data("index");
-            PaymentUtils.change(index);
-        });
-    },
-    hide : function () {
-        $("#reward").modal('hide');
-    },
-    change: function (index) {
-        var config = this.config[index];
-        $("#qrcode-container").empty();
-        $('<img  src="' + config.url + '" style="width: 250px;height: 250px;" alt="'+config.desc+'">').appendTo($("#qrcode-container"));
-    }
-
-};
+// var PaymentUtils = window.payment || {
+//     config: [{url: appConfig.staticPath + '/img/alipay_nb.jpg', desc: '支付宝转账'},{url: appConfig.staticPath + '/img/wechat_nb.jpg', desc: '微信转账'}],
+//     show : function () {
+//         $("#reward").modal('show');
+//         this.change(0);
+//         $("#reward input").on('ifChecked', function(event){
+//             var index = $(this).data("index");
+//             PaymentUtils.change(index);
+//         });
+//     },
+//     hide : function () {
+//         $("#reward").modal('hide');
+//     },
+//     change: function (index) {
+//         var config = this.config[index];
+//         $("#qrcode-container").empty();
+//         $('<img  src="' + config.url + '" style="width: 250px;height: 250px;" alt="'+config.desc+'">').appendTo($("#qrcode-container"));
+//     }
+//
+// };
 $(function () {
     initNavbar();
     initArticeMenu();

@@ -4,6 +4,7 @@ import com.pan.blog.dao.SiteInfoRepository;
 import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.service.SiteInfoService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,6 @@ public class SiteInfoServiceImpl implements SiteInfoService {
         List<SiteInfo> siteInfoList = this.findAll();
         SiteInfo siteInfo = siteInfoList.get(0);
         siteInfo.setVisitSize(siteInfo.getVisitSize() + 1);
-        this.saveSiteInfo(siteInfo);
+        ((SiteInfoService) AopContext.currentProxy()).saveSiteInfo(siteInfo);
     }
 }
