@@ -72,7 +72,7 @@ public class BlogServiceImpl implements BlogService {
     public void readSizeIncrease(Long id) {
         Blog blog = this.getBlogById(id);
         blog.setReadSize(blog.getReadSize() + 1);
-        //this.saveBlog(blog); //使用此写法事务失效，因为此处的this指向的对象不是spring代理的对象
+        //this.saveBlog(blog); //使用此写法事务失效，因为此处的this指的是被代理的真实对象BlogServiceImpl的实例，不是BlogService代理对象自身
         ((BlogService) AopContext.currentProxy()).saveBlog(blog);
     }
 
