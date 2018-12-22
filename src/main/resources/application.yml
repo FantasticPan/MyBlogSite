@@ -33,7 +33,7 @@ spring:
     show-sql: false
     hibernate:
       #只有使用create-drop在resources下的SQL脚本才能够生效
-      ddl-auto: create-drop
+      ddl-auto: update
     open-in-view: true
 
 #  #redis配置
