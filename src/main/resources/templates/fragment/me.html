@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<div class="sidebar-module" th:fragment="me">
+    <h5 class="sidebar-title"><i class="fa fa-home icon"></i><strong>关于我</strong></h5>
+    <div class="widget">
+        <div id="feed_widget">
+            <div class="feed-about">
+                <div class="about-main">
+                    <div class="about-img">
+                        <a href="/images/qq.png" class="showImage" title="通过QQ联系我"><img src="/images/me.jpg"
+                                                                                        alt="QQ"></a>
+                    </div>
+                    <div class="about-name">李攀</div>
+                    <div class="about-the" align="center">西南石油大学在读学生</div>
+                    <div class="about-the" align="center">热衷于后端的学习</div>
+                </div>
+                <div class="clear"></div>
+                <!-- 方案一：图标展示 -->
+                <ul class="widget-icon">
+                    <li class="github auto-shake">
+                        <a class="tag-icon" href="https://github.com/FantasticPan" title="点击查看我的github"
+                           target="_blank" rel="external nofollow"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li class="tsina auto-shake">
+                        <a class="tag-icon" href="https://blog.csdn.net/SWPU_Lipan" title="点击查看我的CSDN"
+                           target="_blank" rel="external nofollow"><img style="width: 17px" src="/images/csdn.png"></a>
+                    </li>
+                    <li class="tqq auto-shake" data-container="body" data-toggle="popover"
+                        data-trigger="hover" data-placement="bottom" data-html="true"
+                        data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;">
+                        <a class="tag-icon" title="QQ" rel="external nofollow"><i class="fa fa-qq"></i></a>
+                    </li>
+                    <li class="weixin auto-shake" data-container="body" data-toggle="popover"
+                        data-trigger="hover" data-placement="bottom" data-html="true"
+                        data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;">
+                        <a class="tag-icon" title="微信" rel="external nofollow"><i class="fa fa-weixin"></i></a>
+                    </li>
+                </ul>
+                <!-- 方案二：列表展示 -->
+                <ul class="list-unstyled" style="padding-left: 44px">
+                    <li><i class="fa fa-info-circle fa-fw"></i>博主：
+                        <small>李攀</small>
+                    </li>
+                    <li><i class="fa fa-user-circle fa-fw"></i>职业：
+                        <small>学生</small>
+                    </li>
+                    <li><i class="fa fa-home fa-fw"></i>住地：
+                        <small>四川成都</small>
+                    </li>
+                    <li><i class="fa fa-envelope-square fa-fw"></i>邮箱：
+                        <small>18380321869@163.com</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

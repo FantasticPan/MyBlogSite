@@ -1,5 +1,6 @@
 <!doctype html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -62,9 +63,7 @@
             </form>
         </div>
     </div>
-    <footer class="log-footer">
-        © · 2018 <a href="http://www.lipan.xyz">Li Pan's 博客 </a>版权所有
-    </footer>
+    <footer th:include="fragment/footer :: footer" th:align="center"></footer>
 </div>
 
 

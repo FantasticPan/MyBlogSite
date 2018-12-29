@@ -12,7 +12,6 @@
     <meta name="keywords" content="博客,程序猿,程序员,后端开发,软件开发,WEB开发,Java攻城狮,全栈工程师,原创博客,个人原创网站,个人技术博客">
     <meta name="description" content="这是一个程序员的个人技术博客，旨在分享工作和学习中用到的技术、遇到的疑难知识点，也为了备战自己的人生。心之所向，无所不能。" id="meta_description">
     <link rel="canonical" href="http://www.lipan.xyz/">
-    <!--<link href="/db/img/favicon.ico" rel="shortcut icon" type="image/x-icon">-->
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/jquery-confirm/2.5.1/jquery-confirm.min.css" rel="stylesheet">
@@ -23,64 +22,8 @@
 </head>
 
 <body>
-<nav id="topmenu" class="navbar navbar-default navbar-fixed-top" style="opacity: 1;">
-    <div class="menu-box">
-        <div class="pull-left">
-            <ul class="list-unstyled list-inline">
-                <li><span id="currentTime">2018年04月11日 09时43分24秒 星期三</span></li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-        <div class="menu-topmenu-container pull-right">
-            <ul class="list-unstyled list-inline pull-left">
-                <li sec:authorize="isAnonymous()">
-                    <a href="/login" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>登录</a>
-                </li>
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/}" class="menu_a" data-placement="bottom"><i class="fa fa-link fa-fw"></i><span sec:authentication="name">李攀</span></a>
-                    <a th:href="@{'/' + ${#authentication.name} + '/blog/edit'}" class="menu_a" data-placement="bottom"><i class="fa fa-gg fa-fw"></i>写博客</a>
-                    <a th:href="@{/admin}" class="menu_a" data-placement="bottom" target="_blank"><i class="fa fa-fire fa-fw"></i>后台管理</a>
-                    <a th:href="@{/logout}" class="menu_a" data-placement="bottom"><i class="fa fa-sign-in"></i>退出</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<nav id="mainmenu" class="navbar navbar-default navbar-fixed-top" role="navigation" style="top: 30px; z-index: 998;">
-    <div class="menu-box">
-        <div class="navbar-header">
-            <h1 style="font-size: 20px;font-weight: 700;display: none" class="auto-shake"><a href="/" data-placement="bottom">Li Pan's 博客</a></h1>
-            <a type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="navbar-brand logo" href="/"></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <div class="pull-left" style="line-height: 0.9;">
-                <h1 style="font-size: 20px;font-weight: 700;" class="auto-shake"><a href="/" data-placement="bottom">Li Pan's 博客</a></h1>
-                <p class="site-description">写博客、记日志、闲聊扯淡鼓捣技术</p>
-            </div>
-            <ul class="nav navbar-nav ">
-                <li class="active">
-                    <a href="/" class="menu_a"><i class="fa fa-home"></i>首页</a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle menu_a" data-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-code"></i>博客分类<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li th:each="s : ${blogModel.catalogs}">
-                            <a th:href="'/catalog/' + ${s}"  title="点击查看该分类文章" th:text="${s}" aria-expanded="false">分类</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div th:replace="fragment/header :: #topmenu"></div>
+<div th:replace="fragment/header :: #mainmenu"></div>
 <div class="container custome-container">
     <!--[if lt IE 9]>
     <div class="alert alert-danger topframe" role="alert">Oh My God！你的浏览器实在<strong>太太太太太太旧了</strong>，赶紧升级浏览器 <a
@@ -139,52 +82,7 @@
             </div>
         </div>
         <div class="col-sm-3 blog-sidebar">
-            <div class="sidebar-module">
-                <h5 class="sidebar-title"><i class="fa fa-home icon"></i><strong>关于我</strong></h5>
-                <div class="widget">
-                    <div id="feed_widget">
-                        <div class="feed-about">
-                            <div class="about-main">
-                                <div class="about-img">
-                                    <a href="/images/qq.png" class="showImage" title="通过QQ联系我"><img src="/images/me.jpg" alt="QQ"></a>
-                                </div>
-                                <div class="about-name">李攀</div>
-                                <div class="about-the" align="center">西南石油大学在读学生</div>
-                                <div class="about-the" align="center">热衷于后端的学习</div>
-                            </div>
-                            <div class="clear"></div>
-                            <!-- 方案一：图标展示 -->
-                            <ul class="widget-icon">
-                                <li class="github auto-shake">
-                                    <a class="tag-icon" href="https://github.com/FantasticPan" title="点击查看我的github"
-                                       target="_blank" rel="external nofollow"><i class="fa fa-github"></i></a>
-                                </li>
-                                <li class="tsina auto-shake">
-                                    <a class="tag-icon" href="https://blog.csdn.net/SWPU_Lipan" title="点击查看我的CSDN"
-                                       target="_blank" rel="external nofollow"><img style="width: 17px" src="/images/csdn.png"></a>
-                                </li>
-                                <li class="tqq auto-shake" data-container="body" data-toggle="popover"
-                                    data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/qq.png' style='width: 130px;' alt='QR Code'&gt;">
-                                    <a class="tag-icon" title="QQ" rel="external nofollow"><i class="fa fa-qq"></i></a>
-                                </li>
-                                <li class="weixin auto-shake" data-container="body" data-toggle="popover"
-                                    data-trigger="hover" data-placement="bottom" data-html="true"
-                                    data-content="&lt;img src='/images/wechat.png' style='width: 130px;' alt='QR Code'&gt;">
-                                    <a class="tag-icon" title="微信" rel="external nofollow"><i class="fa fa-weixin"></i></a>
-                                </li>
-                            </ul>
-                            <!-- 方案二：列表展示 -->
-                            <ul class="list-unstyled" style="padding-left: 44px">
-                                <li><i class="fa fa-info-circle fa-fw"></i>博主：<small>李攀</small></li>
-                                <li><i class="fa fa-user-circle fa-fw"></i>职业：<small>学生</small></li>
-                                <li><i class="fa fa-home fa-fw"></i>住地：<small>四川成都</small></li>
-                                <li><i class="fa fa-envelope-square fa-fw"></i>邮箱：<small>18380321869@163.com</small></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div th:replace="fragment/me :: me"></div>
             <div class="sidebar-module">
                 <h5 class="sidebar-title"><i class="fa fa-tags icon"></i><strong>文章标签</strong></h5>
                 <ul class="list-unstyled list-inline">
@@ -196,19 +94,9 @@
                 </ul>
             </div>
             <div class="clear"></div>
-            <div class="sidebar-module">
-                <h5 class="sidebar-title"><i class="fa fa-info icon"></i><strong>网站信息</strong></h5>
-                <ul class="ul-default">
-                    <li><i class="fa fa-file fa-fw"></i> 文章总数：[[${blogModel.info.articleNum}]] 篇</li>
-                    <li><i class="fa fa-tags fa-fw"></i> 标签总数：[[${blogModel.info.tagNum}]] 个</li>
-                    <li><i class="fa fa-folder-open fa-fw"></i> 分类总数：[[${blogModel.info.catalogNum}]] 个</li>
-                    <!--<li><i class="fa fa-comments fa-fw"></i> 留言数量：50 条</li>-->
-                    <!--<li><i class="fa fa-users fa-fw"></i> 在线人数：<span class="online">11</span>人</li>-->
-                    <li><i class="fa fa-calendar fa-fw"></i> 运行天数：[[${blogModel.info.runDays}]] 天</li>
-                    <li><i class="fa fa-eye fa-fw"></i> 访问量：[[${blogModel.info.visitSize}]] 次</li>
-                    <li><i class="fa fa-pencil-square fa-fw"></i> 最后更新：2018年12月01日22点</li>
-                </ul>
-            </div>
+
+            <div th:replace="fragment/site-info :: siteInfo"></div>
+            <div></div>
         </div>
     </div>
 </div>
@@ -220,11 +108,7 @@
         <div class="loading-2">Loading...</div>
     </div>
 </div>
-<footer>
-    <div style="padding-top: 15px" align="center">
-        <p>© · 2018 <a href="http://www.lipan.xyz">Li Pan's 博客 </a>版权所有</p>
-    </div>
-</footer>
+<footer th:include="fragment/footer :: footer" th:align="center"></footer>
 <a class="to-top" title="点击返回顶部" data-placement="bottom"
    style="position: fixed; right: 25px; bottom: 50px; cursor: pointer; display: none;"></a>
 <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
