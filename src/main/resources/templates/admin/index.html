@@ -58,15 +58,19 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>通用</h3>
+                        <h3>功能列表</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
+                            <li id="index_tab" class="click_tab active">
+                                <a><i class="fa fa-home"></i>主页</a>
+                            </li>
+
+                            <li><a><i class="fa fa-edit"></i> 博客管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="javascript:;">博客列表</a></li>
-                                    <li><a href="javascript:;">个人主页</a></li>
-                                    <!--<li><a href="index3.html">Dashboard3</a></li>-->
+                                    <li id="list_tab" class="click_tab"><a href="javascript:;">博客列表</a></li>
+                                    <li id="me_tab" class="click_tab"><a href="javascript:;">个人主页</a></li>
                                 </ul>
                             </li>
+
                         </ul>
                     </div>
 
@@ -125,7 +129,44 @@
         <!-- /top navigation -->
 
         <!--page content-->
-        <div class="right_col" role="main">
+        <div id="index" class="right_col" role="main">
+            <div class="">
+                <div class="row top_tiles">
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                            <div class="count">179</div>
+                            <h3>文章</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-comments-o"></i></div>
+                            <div class="count">179</div>
+                            <h3>标签</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                            <div class="count">179</div>
+                            <h3>分类</h3>
+                        </div>
+                    </div>
+                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                            <div class="count">179</div>
+                            <h3>留言</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/page content-->
+
+        <!--page content-->
+        <div id="article_list" class="right_col" style="display: none" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
@@ -201,7 +242,7 @@
         <!--/page content-->
 
         <!--page content-->
-        <div class="right_col" style="display: none" role="main">
+        <div id="me" class="right_col" style="display: none" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">

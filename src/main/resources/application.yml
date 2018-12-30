@@ -11,6 +11,7 @@ spring:
     password: fp8oDILnjth8tN93P21ntgtjkY7Hdu//AS+ZVPe1gw90FRe4zjyXidZyYdUDA1G5Rq5O5LHfVhXbqqhtek6YsA==
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+#    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
     #druid连接池配置
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

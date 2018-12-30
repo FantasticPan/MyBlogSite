@@ -1,6 +1,7 @@
 package com.pan.blog.controller;
 
 import com.pan.blog.util.ResultUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by FantasticPan on 2018/12/29.
  */
+@Slf4j
 @Controller
 public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController {
 
@@ -25,6 +27,8 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
     @RequestMapping(value = ERROR_PATH)
     public ModelAndView errorHandler(HttpServletRequest request,
                                      Model model) {
+        log.info("发生错误");
+
         HttpStatus status = getStatus(request);
 
         //根据状态码返回对应的视图

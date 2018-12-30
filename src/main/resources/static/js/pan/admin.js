@@ -1,5 +1,8 @@
 $(function () {
 
+    // $(".articles_list").click(function () {
+    //     getAllArticle();
+    // });
     getAllArticle();
 
     $(".child_menu li").each(function (i, val) {
@@ -8,12 +11,25 @@ $(function () {
                 $(val).removeClass("active");
             })
             $(this).addClass("active");
-            $(".right_col").each(function (i, val) {
-                $(val).css("display", "none");
-            })
-            $(".right_col").eq(i).css("display", "block");
+            // $(".right_col").each(function (i, val) {
+            //     $(val).css("display", "none");
+            // })
+            // $(".right_col").eq(i).css("display", "block");
         });
     });
+
+
+    $("#index_tab").attr("data-show","index");
+    $("#list_tab").attr("data-show","article_list");
+    $("#me_tab").attr("data-show","me");
+    $(".click_tab").click(function(){
+        var show="#"+$(this).attr('data-show');
+        $(".right_col").css('display','none');
+        $(show).css('display','block');
+    });
+
+
+
 
     function getAllArticle() {
         $.ajax({
