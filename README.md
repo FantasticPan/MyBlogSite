@@ -6,14 +6,15 @@
 2. 项目管理：Maven
 3. 技术点：SpringBoot 2.1.1 + JPA + MySQL + Thymeleaf
 ## 前台展示
-![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214133829.png)
+![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/index.png)
 ## 写博客
 ![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214133751.png)
 ## 文章阅读
 ![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/readArticle.png)
 ## 后台管理
-![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214132021.png)
-![image](https://fantasticpan.oss-cn-beijing.aliyuncs.com/TIM%E6%88%AA%E5%9B%BE20181214132036.png)
+![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/back-index.png)
+![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/back-article.png)
+![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/back-article2.png)
 ## 项目相关
 ### 1. 项目运行
 使用Maven将项目打成jar包，上传至服务器<br/>
