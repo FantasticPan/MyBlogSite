@@ -3,7 +3,17 @@ $(function () {
     // $(".articles_list").click(function () {
     //     getAllArticle();
     // });
+    getSiteInfo();
     getAllArticle();
+
+    // $(".right_col").css("display","none");
+    // $(".right_col").eq(0).css("display","block");
+    $(".menu-tab").each(function (i, val) {
+        $(val).click(function () {
+            $(".right_col").css("display", "none");
+            $(".right_col").eq(i).css("display", "block");
+        })
+    });
 
     $(".child_menu li").each(function (i, val) {
         $(val).click(function () {
@@ -18,18 +28,14 @@ $(function () {
         });
     });
 
-
-    $("#index_tab").attr("data-show","index");
-    $("#list_tab").attr("data-show","article_list");
-    $("#me_tab").attr("data-show","me");
-    $(".click_tab").click(function(){
-        var show="#"+$(this).attr('data-show');
-        $(".right_col").css('display','none');
-        $(show).css('display','block');
-    });
-
-
-
+    // $("#index_tab").attr("data-show","index");
+    // $("#list_tab").attr("data-show","article_list");
+    // $("#me_tab").attr("data-show","me");
+    // $(".click_tab").click(function(){
+    //     var show="#"+$(this).attr('data-show');
+    //     $(".right_col").css('display','none');
+    //     $(show).css('display','block');
+    // });
 
     function getAllArticle() {
         $.ajax({
@@ -37,7 +43,7 @@ $(function () {
             url: "/admin/getAllArticle",
             dataType: "json",
             success: function (data) {
-                console.log(data);
+                // console.log(data);
                 for (var i in data) {
                     var article = $('<tr>' +
                         '<td class="articleId">' + data[i].id + '</td>' +
@@ -82,5 +88,22 @@ $(function () {
         });
     }
 
+    function getSiteInfo() {
+        $.ajax({
+            type: "GET",
+            url: "/admin/getSiteInfo",
+            dataType: "json",
+            success: function (data) {
+                console.log("网站信息" + data.articleNum);
+                $(".article-count").html(data.articleNum);
+                $(".tag-count").html(data.tagNum);
+                $(".catalog-count").html(data.catalogNum);
+                $(".visit-count").html(data.visitSize);
+            },
+            error: function (error) {
+                console.log("错误信息：" + error)
+            }
+        });
+    }
 
 });

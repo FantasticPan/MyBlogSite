@@ -60,14 +60,14 @@
                     <div class="menu_section">
                         <h3>功能列表</h3>
                         <ul class="nav side-menu">
-                            <li id="index_tab" class="click_tab active">
+                            <li class="active menu-tab">
                                 <a><i class="fa fa-home"></i>主页</a>
                             </li>
 
                             <li><a><i class="fa fa-edit"></i> 博客管理 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li id="list_tab" class="click_tab"><a href="javascript:;">博客列表</a></li>
-                                    <li id="me_tab" class="click_tab"><a href="javascript:;">个人主页</a></li>
+                                    <li class="menu-tab"><a href="javascript:;">文章列表</a></li>
+                                    <li class="menu-tab"><a href="javascript:;">个人主页</a></li>
                                 </ul>
                             </li>
 
@@ -88,7 +88,7 @@
                     <a data-toggle="tooltip" data-placement="top" title="Lock">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                     </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="/logout">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -113,10 +113,10 @@
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="javascript:;"> 个人主页</a></li>
                                 <!--<li>-->
-                                    <!--<a href="javascript:;">-->
-                                        <!--&lt;!&ndash;<span class="badge bg-red pull-right">50%</span>&ndash;&gt;-->
-                                        <!--<span>设置</span>-->
-                                    <!--</a>-->
+                                <!--<a href="javascript:;">-->
+                                <!--&lt;!&ndash;<span class="badge bg-red pull-right">50%</span>&ndash;&gt;-->
+                                <!--<span>设置</span>-->
+                                <!--</a>-->
                                 <!--</li>-->
                                 <!--<li><a href="javascript:;">Help</a></li>-->
                                 <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> 退出</a></li>
@@ -128,51 +128,73 @@
         </div>
         <!-- /top navigation -->
 
-        <!--page content-->
-        <div id="index" class="right_col" role="main">
-            <div class="">
-                <div class="row top_tiles">
-                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-                            <div class="count">179</div>
-                            <h3>文章</h3>
-                        </div>
+        <!--page content index-->
+        <div class="right_col" role="main">
+            <div class="row top_tiles">
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-book"></i></div>
+                        <div class="count article-count"></div>
+                        <h3>文章</h3>
                     </div>
-                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                            <div class="icon"><i class="fa fa-comments-o"></i></div>
-                            <div class="count">179</div>
-                            <h3>标签</h3>
-                        </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-tags"></i></div>
+                        <div class="count tag-count"></div>
+                        <h3>标签</h3>
                     </div>
-                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-                            <div class="count">179</div>
-                            <h3>分类</h3>
-                        </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-folder"></i></div>
+                        <div class="count catalog-count"></div>
+                        <h3>分类</h3>
                     </div>
-                    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="tile-stats">
-                            <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                            <div class="count">179</div>
-                            <h3>留言</h3>
-                        </div>
+                </div>
+                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="tile-stats">
+                        <div class="icon"><i class="fa fa-users"></i></div>
+                        <div class="count visit-count"></div>
+                        <h3>访问</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Pie Graph</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Settings</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div id="echart_pie" style="height:350px;"></div>
                     </div>
                 </div>
             </div>
         </div>
         <!--/page content-->
 
-        <!--page content-->
-        <div id="article_list" class="right_col" style="display: none" role="main">
+        <!--page content article-list-->
+        <div class="right_col" style="display: none" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>文章列表
-                            <small>文章列表</small>
-                        </h3>
+                        <h3>博客管理</h3>
                     </div>
 
                     <div class="title_right">
@@ -201,7 +223,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                            aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Settings 1</a>
+                                            <li><a href="#">Settings</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -241,8 +263,8 @@
         </div>
         <!--/page content-->
 
-        <!--page content-->
-        <div id="me" class="right_col" style="display: none" role="main">
+        <!--page content me-->
+        <div class="right_col" style="display: none" role="main">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
@@ -277,10 +299,7 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                            aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">设置</a>
-                                            </li>
-                                            <!--<li><a href="#">Settings 2</a>-->
-                                            <!--</li>-->
+                                            <li><a href="#">设置</a></li>
                                         </ul>
                                     </li>
                                     <li><a class="close-link"><i class="fa fa-close"></i></a>
@@ -293,30 +312,21 @@
                                     <div class="profile_img">
                                         <div id="crop-avatar">
                                             <!-- Current avatar -->
-                                            <img class="img-responsive avatar-view" src="/images/picture.jpg"
+                                            <img class="img-responsive avatar-view" src="/images/me.jpg"
                                                  alt="Avatar" title="Change the avatar">
                                         </div>
                                     </div>
                                     <h3>李 攀</h3>
-
                                     <ul class="list-unstyled user_data">
-                                        <li><i class="fa fa-map-marker user-profile-icon"></i> 成都,
-                                            四川, 中国
-                                        </li>
-
-                                        <li>
-                                            <i class="fa fa-briefcase user-profile-icon"></i> 后端
-                                        </li>
-
+                                        <li><i class="fa fa-map-marker user-profile-icon"></i> 成都, 四川, 中国</li>
+                                        <li><i class="fa fa-briefcase user-profile-icon"></i> 后端</li>
                                         <li class="m-top-xs">
                                             <i class="fa fa-external-link user-profile-icon"></i>
-                                            <a href="http://www.kimlabs.com/profile/"
-                                               target="_blank">www.lipan.xyz</a>
+                                            <a href="http://www.kimlabs.com/profile/" target="_blank">www.lipan.xyz</a>
                                         </li>
                                     </ul>
 
-                                    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
-                                    <br/>
+                                    <a class="btn btn-success"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a><br/>
 
                                     <!-- start skills -->
                                     <h4>技术栈</h4>
@@ -324,29 +334,25 @@
                                         <li>
                                             <p>后端开发</p>
                                             <div class="progress progress_sm">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                     data-transitiongoal="80"></div>
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
                                             </div>
                                         </li>
                                         <li>
                                             <p>前端设计</p>
                                             <div class="progress progress_sm">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                     data-transitiongoal="40"></div>
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
                                             </div>
                                         </li>
                                         <li>
                                             <p>Linux</p>
                                             <div class="progress progress_sm">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                     data-transitiongoal="50"></div>
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
                                             </div>
                                         </li>
                                         <li>
                                             <p>Java</p>
                                             <div class="progress progress_sm">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                     data-transitiongoal="70"></div>
+                                                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
                                             </div>
                                         </li>
                                     </ul>
@@ -382,6 +388,8 @@
 <script src="/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="/vendors/nprogress/nprogress.js"></script>
+<!-- ECharts -->
+<script src="/vendors/echarts/dist/echarts.min.js"></script>
 <!-- Chart.js -->
 <script src="/vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->

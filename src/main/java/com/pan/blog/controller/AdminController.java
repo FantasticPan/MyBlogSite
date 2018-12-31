@@ -1,7 +1,9 @@
 package com.pan.blog.controller;
 
 import com.pan.blog.entity.Blog;
+import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.service.BlogService;
+import com.pan.blog.service.SiteInfoService;
 import com.pan.blog.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,8 @@ public class AdminController {
 
     @Autowired
     private BlogService blogService;
-
+    @Autowired
+    private SiteInfoService siteInfoService;
 
     @RequestMapping("")
     public ModelAndView index(Model model) {
@@ -32,7 +35,7 @@ public class AdminController {
     }
 
     /**
-     * 接受ajax请求
+     * 接受ajax请求，获取所有文章
      *
      * @return
      */
@@ -40,5 +43,11 @@ public class AdminController {
     @ResponseBody
     public List<Blog> getAllArticle() {
         return blogService.getAllBlog();
+    }
+
+    @GetMapping("/getSiteInfo")
+    @ResponseBody
+    public SiteInfo getSiteInfo() {
+        return siteInfoService.findAll().get(0);
     }
 }
