@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 自定义全局异常界面
  * Created by FantasticPan on 2018/12/29.
  */
 @Slf4j

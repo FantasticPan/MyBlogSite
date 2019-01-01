@@ -216,6 +216,7 @@ public class BlogController {
             request.getSession().setAttribute("blog", blog);
 
             model.addAttribute("tags", "");
+            model.addAttribute("catalog", "");
         } else {
             blog = blogService.getBlogById(id);
             blog.setTitle(title);
@@ -227,7 +228,10 @@ public class BlogController {
             for (Tag tag : blog.getTags()) {
                 tags.add(tag.getTagName());
             }
+
+            //集合转化为字符串，添加到model
             model.addAttribute("tags", StringUtils.join(tags, ","));
+            model.addAttribute("catalog", blog.getCatalog());
         }
 
         return ResultUtil.view("tag-catalog", "blogModel", model);

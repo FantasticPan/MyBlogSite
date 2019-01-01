@@ -1,10 +1,14 @@
 # MyBlogSite
 :book:自己搭建的[博客网站（www.lipan.xyz）](http://www.lipan.xyz)，细节功能待完善
-## 开发工具
-1. IDE：IDEA
-2. java -version：1.8
-2. 项目管理：Maven
-3. 技术点：SpringBoot 2.1.1 + JPA + MySQL + Thymeleaf
+
+![SpringBoot](https://img.shields.io/badge/SpringBoot-2.1.1.RELEASE-red.svg)
+![JDK](https://img.shields.io/badge/JDK-1.8-brightgreen.svg)
+![IDE](https://img.shields.io/badge/IDE-IDEA-green.svg)
+![Maven](https://img.shields.io/badge/Maven-3.3.9-blue.svg)
+![MySQL](https://img.shields.io/badge/MySQL-5.5.56-yellow.svg)
+![ROM](https://img.shields.io/badge/JPA-2.1.1.RELEASE-orange.svg)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-2.1.1.RELEASE-yellowgreen.svg)
+
 ## 前台展示
 ![image](http://fantasticpan.oss-cn-beijing.aliyuncs.com/index.png)
 ## 写博客
