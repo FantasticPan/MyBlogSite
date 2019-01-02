@@ -63,5 +63,7 @@ server:
 blog:
   profile:
     initial-date: 2018-12-17
+    #session过期时间，单位：秒
+    session-time: 18000
 logging:
   path: /var/log/MyBlogSite

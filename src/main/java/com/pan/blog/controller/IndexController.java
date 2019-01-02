@@ -40,6 +40,8 @@ public class IndexController {
     private SiteInfoService siteInfoService;
     @Value("${blog.profile.initial-date}")
     private String initialDate;
+    @Value("${blog.profile.session-time}")
+    private int sessionTime;
 
     @RequestMapping("/")
     public ModelAndView index(Model model,
@@ -51,7 +53,7 @@ public class IndexController {
         LocalDateTime time = (LocalDateTime) request.getSession().getAttribute(sessionId);
         if (time == null) {
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(10 * 60); //设置session过期时间，单位：秒，这里我设为十分钟
+            session.setMaxInactiveInterval(sessionTime); //设置session过期时间，单位：秒
             session.setAttribute(sessionId, LocalDateTime.now());
             siteInfoService.visitSizeIncrease();
         }

@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -45,6 +46,8 @@ public class BlogController {
     private TagService tagService;
     @Autowired
     private SiteInfoService siteInfoService;
+    @Value("${blog.profile.session-time}")
+    private int sessionTime;
 
     @GetMapping({"/{username}/blog/edit"})
     @PreAuthorize("authentication.name.equals(#username)")
@@ -80,7 +83,7 @@ public class BlogController {
         if (time == null) {
             //配置session
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(10 * 60);
+            session.setMaxInactiveInterval(sessionTime);
             session.setAttribute(sessionId, LocalDateTime.now());
             blogService.readSizeIncrease(id);
         }
@@ -333,7 +336,7 @@ public class BlogController {
         if (time == null) {
             //配置session
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(10 * 60);
+            session.setMaxInactiveInterval(sessionTime);
             session.setAttribute(sessionId, LocalDateTime.now());
             blogService.voteSizeInIncrease(id);
         }
