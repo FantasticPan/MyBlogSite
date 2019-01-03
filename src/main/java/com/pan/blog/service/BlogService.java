@@ -37,4 +37,12 @@ public interface BlogService {
     void voteSizeInIncrease(Long id);
 
     Integer getVoteSize(Long id);
+
+    List<Blog> getRecentArticles();
+
+    Blog getFirstArticleByReadSize();
+
+    Blog getSecondArticleByReadSize();
+
+    Blog getThirdArticleByReadSize();
 }

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+<div class="sidebar-module" th:fragment="article">
+    <ul class="nav nav-tabs sidebar-tabs" role="tablist">
+        <!--<li role="presentation" class="active">-->
+            <!--<a href="#home" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-thumbs-o-up"></i>站长推荐</a>-->
+        <!--</li>-->
+        <li role="presentation" class="active">
+            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="fa fa-list"></i>近期文章</a>
+        </li>
+        <!--<li role="presentation">-->
+            <!--<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="fa fa-hand-peace-o"></i>随机文章</a>-->
+        <!--</li>-->
+    </ul>
+    <div class="tab-content">
+        <!--<div role="tabpanel" class="tab-pane active" id="home">-->
+            <!--<ol class="list-unstyled">-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-1">1</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Cordova入门（一）创建android项目">-->
+                        <!--Cordova入门（一）创建android项目-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-2">2</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="【漏洞公告】Spring Framework多个安全漏洞预警">-->
+                        <!--【漏洞公告】Spring Framework多个安全漏洞预警-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-3">3</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="快来薅羊毛！1核 2G1M宽带40GSSD硬盘才99元一年！">-->
+                        <!--快来薅羊毛！1核 2G1M宽带40GSSD硬盘才99元一年！-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-4">4</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title=" zTree实现拖拽节点进行排序的功能">-->
+                        <!--zTree实现拖拽节点进行排序的功能-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-5">5</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="配置MySQL开启远程连接的方法">-->
+                        <!--配置MySQL开启远程连接的方法-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-6">6</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="记一次优化网站首页加载速度的过程">-->
+                        <!--记一次优化网站首页加载速度的过程-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-7">7</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="【超全】开发常用工具">-->
+                        <!--【超全】开发常用工具-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ol>-->
+        <!--</div>-->
+        <div role="tabpanel" class="tab-pane active" id="profile">
+            <ol class="list-unstyled">
+                <li id="first">
+                </li>
+                <li id="second">
+                </li>
+                <li id="third">
+                </li>
+                <li th:each="blog,blogStat : ${blogModel.recentArticles}">
+                    <span class="li-icon li-icon-4">[[${blogStat.count} + 3]]</span>
+                    <a th:href="'/blog/' + ${blog.id}" th:text="${blog.title}" title="" data-placement="bottom">
+                    </a>
+                </li>
+            </ol>
+        </div>
+        <!--<div role="tabpanel" class="tab-pane" id="messages">-->
+            <!--<ol class="list-unstyled">-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-1">1</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="SpringBoot项目实战（3）：整合Freemark模板">-->
+                        <!--SpringBoot项目实战（3）：整合Freemark模板-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-2">2</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Maven打包过滤jar包">-->
+                        <!--Maven打包过滤jar包-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-3">3</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="调试mysql存储过程">-->
+                        <!--调试mysql存储过程-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-4">4</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Spring MVC 中上传文件的多种实现及区别">-->
+                        <!--Spring MVC 中上传文件的多种实现及区别-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-5">5</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="base64字符串解码转换成图片">-->
+                        <!--base64字符串解码转换成图片-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-6">6</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="SpringBoot项目实战（2）：集成SpringBoot">-->
+                        <!--SpringBoot项目实战（2）：集成SpringBoot-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-7">7</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="SpringBoot项目实战（5）：集成分页插件">-->
+                        <!--SpringBoot项目实战（5）：集成分页插件-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-8">8</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Centos7安装Docker">-->
+                        <!--Centos7安装Docker-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-9">9</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Java EE重命名为Jakarta EE：Java EE Guardians与Oracle的分歧">-->
+                        <!--Java EE重命名为Jakarta EE：Java EE Guardians与Oracle的分歧-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<span class="li-icon li-icon-10">10</span>-->
+                    <!--<a href="detail.html" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="SpringBoot配置属性之Migration">-->
+                        <!--SpringBoot配置属性之Migration-->
+                    <!--</a>-->
+                <!--</li>-->
+            <!--</ol>-->
+        <!--</div>-->
+    </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,6 @@
 package com.pan.blog.service.impl;
 
+import com.pan.blog.dao.BlogMapper;
 import com.pan.blog.dao.BlogRepository;
 import com.pan.blog.entity.Blog;
 import com.pan.blog.entity.Tag;
@@ -22,6 +23,8 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogRepository blogRepository;
+    @Autowired
+    private BlogMapper blogMapper;
 
     @Transactional
     @Override
@@ -86,5 +89,25 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Integer getVoteSize(Long id) {
         return ((BlogService) AopContext.currentProxy()).getBlogById(id).getVoteSize();
+    }
+
+    @Override
+    public List<Blog> getRecentArticles() {
+        return blogMapper.getRecentArticles();
+    }
+
+    @Override
+    public Blog getFirstArticleByReadSize() {
+        return blogMapper.getFirstArticleByReadSize();
+    }
+
+    @Override
+    public Blog getSecondArticleByReadSize() {
+        return blogMapper.getSecondArticleByReadSize();
+    }
+
+    @Override
+    public Blog getThirdArticleByReadSize() {
+        return blogMapper.getThirdArticleByReadSize();
     }
 }

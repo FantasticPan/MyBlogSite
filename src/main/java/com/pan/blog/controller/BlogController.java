@@ -138,6 +138,7 @@ public class BlogController {
         //分类
         List<String> catalogs = blogService.findCatalog();
         Set<String> catalogList = new HashSet<>(catalogs);
+        List<Blog> recentArticles = blogService.getRecentArticles();
 
         model.addAttribute("tags", tagsList);
         model.addAttribute("info", siteInfo.get(0));
@@ -145,6 +146,7 @@ public class BlogController {
         model.addAttribute("blogList", blogList);
         model.addAttribute("name", catalog);
         model.addAttribute("catalogs", catalogList);
+        model.addAttribute("recentArticles", recentArticles);
 
         return ResultUtil.view("show-catalog-type", "blogModel", model);
     }
@@ -175,6 +177,7 @@ public class BlogController {
         //分类
         List<String> catalogs = blogService.findCatalog();
         Set<String> catalogList = new HashSet<>(catalogs);
+        List<Blog> recentArticles = blogService.getRecentArticles();
 
         model.addAttribute("tags", tagsList);
         model.addAttribute("info", siteInfo.get(0));
@@ -182,6 +185,7 @@ public class BlogController {
         model.addAttribute("blogList", blogList);
         model.addAttribute("name", tagName);
         model.addAttribute("catalogs", catalogList);
+        model.addAttribute("recentArticles", recentArticles);
 
         return ResultUtil.view("show-catalog-type", "blogModel", model);
     }
@@ -354,5 +358,23 @@ public class BlogController {
     @ResponseBody
     public Integer getVoteSize(@PathVariable("id") Long id) {
         return blogService.getVoteSize(id);
+    }
+
+    @GetMapping("/getFirstArticleByReadSize")
+    @ResponseBody
+    public Blog getFirstArticleByReadSize() {
+        return blogService.getFirstArticleByReadSize();
+    }
+
+    @GetMapping("/getSecondArticleByReadSize")
+    @ResponseBody
+    public Blog getSecondArticleByReadSize() {
+        return blogService.getSecondArticleByReadSize();
+    }
+
+    @GetMapping("/getThirdArticleByReadSize")
+    @ResponseBody
+    public Blog getThirdArticleByReadSize() {
+        return blogService.getThirdArticleByReadSize();
     }
 }

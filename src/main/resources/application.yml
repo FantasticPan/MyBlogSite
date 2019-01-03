@@ -10,8 +10,8 @@ spring:
     username: root
     password: fp8oDILnjth8tN93P21ntgtjkY7Hdu//AS+ZVPe1gw90FRe4zjyXidZyYdUDA1G5Rq5O5LHfVhXbqqhtek6YsA==
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
-    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+#    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
     #druid连接池配置
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -36,6 +36,12 @@ spring:
       #只有使用create-drop在resources下的SQL脚本才能够生效
       ddl-auto: update
     open-in-view: true
+  #允许bean重写，解决编译时出错，本项目在添加mybaties后出错
+  main:
+    allow-bean-definition-overriding: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.pan.blog.entity
 
 #  #redis配置
 #  cache:
@@ -64,6 +70,6 @@ blog:
   profile:
     initial-date: 2018-12-17
     #session过期时间，单位：秒
-    session-time: 18000
+    session-time: 43200
 logging:
   path: /var/log/MyBlogSite

@@ -46,6 +46,7 @@ public class IndexController {
     @RequestMapping("/")
     public ModelAndView index(Model model,
                               HttpServletRequest request) {
+
         log.info("进入主页函数");
 
         //通过session统计访问量，在session存在期间重复刷新界面访问量不增加，可扩展通过ip统计
@@ -74,11 +75,13 @@ public class IndexController {
         List<SiteInfo> siteInfo = siteInfoService.findAll();
 
         List<Blog> blogList = blogService.getAllBlog();
+        List<Blog> recentArticles = blogService.getRecentArticles();
 
         model.addAttribute("blogList", blogList);
         model.addAttribute("catalogs", catalogList);
         model.addAttribute("tags", tagsList);
         model.addAttribute("info", siteInfo.get(0));
+        model.addAttribute("recentArticles", recentArticles);
 
         return ResultUtil.view("index", "blogModel", model);
     }

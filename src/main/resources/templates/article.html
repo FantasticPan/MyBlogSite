@@ -156,11 +156,11 @@
 <script type="text/javascript" src="/db/js/zhyd.js"></script>
 <!-- comment插件会请求服务器获取评论内容，静态示例页面中不需要 -->
 <!--<script type="text/javascript" src="/db/js/zhyd.comment.js"></script>-->
-<script src="https://v1.hitokoto.cn/?encode=js&c=d&select=%23hitokoto" defer></script>
 <script th:inline="javascript">
     var blogId = [[${blogModel.blog.id}]];
     var submitVoteUrl = '/' + [[${blogModel.blog.user.username}]] + '/submitVote/' + [[${blogModel.blog.id}]];
 </script>
 <script type="text/javascript" src="/js/pan/vote.js"></script>
+<script src="https://v1.hitokoto.cn/?encode=js&c=d&select=%23hitokoto" defer></script>
 </body>
 </html>
