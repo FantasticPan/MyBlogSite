@@ -599,7 +599,7 @@ span.separation:AFTER {
     padding-left: 0px;
 }
 
-/* 滚动条 start */
+/*!* 滚动条 start *!*/
 ::-webkit-scrollbar {
     border-radius: 0px;
     width: 7px;
@@ -615,7 +615,7 @@ span.separation:AFTER {
 ::-webkit-scrollbar-thumb {
     border-radius: 0px;
     /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);*/
-    background-color: #ececec;
+    background-color: #ccc;
 }
 
 /* 滚动条 end */
