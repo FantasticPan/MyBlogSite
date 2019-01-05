@@ -1,7 +1,7 @@
 package com.pan.blog.service.impl;
 
 import com.pan.blog.dao.mapper.BlogMapper;
-import com.pan.blog.dao.BlogRepository;
+import com.pan.blog.dao.repository.BlogRepository;
 import com.pan.blog.entity.Blog;
 import com.pan.blog.entity.Tag;
 import com.pan.blog.service.BlogService;

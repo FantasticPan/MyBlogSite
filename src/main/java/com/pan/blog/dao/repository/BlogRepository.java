@@ -1,4 +1,4 @@
-package com.pan.blog.dao;
+package com.pan.blog.dao.repository;
 
 import com.pan.blog.entity.Blog;
 import com.pan.blog.entity.Tag;

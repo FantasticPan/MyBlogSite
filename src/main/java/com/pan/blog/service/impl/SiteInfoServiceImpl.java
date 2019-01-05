@@ -1,6 +1,6 @@
 package com.pan.blog.service.impl;
 
-import com.pan.blog.dao.SiteInfoRepository;
+import com.pan.blog.dao.repository.SiteInfoRepository;
 import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.service.SiteInfoService;
 import lombok.extern.slf4j.Slf4j;

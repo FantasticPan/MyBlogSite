@@ -1,6 +1,6 @@
 package com.pan.blog.service.impl;
 
-import com.pan.blog.dao.TagRepository;
+import com.pan.blog.dao.repository.TagRepository;
 import com.pan.blog.entity.Tag;
 import com.pan.blog.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
