@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.pan.blog.dao.BlogMapper">    <!--将这个接口指向对应的实现类,在接口中引入方法-->
+<mapper namespace="com.pan.blog.dao.mapper.BlogMapper">    <!--将这个接口指向对应的实现类,在接口中引入方法-->
 
     <select id="getRecentArticles" resultType="com.pan.blog.entity.Blog">
         SELECT * FROM blog ORDER BY read_size DESC LIMIT 3, 7

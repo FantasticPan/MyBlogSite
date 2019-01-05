@@ -36,9 +36,8 @@ spring:
       #只有使用create-drop在resources下的SQL脚本才能够生效
       ddl-auto: update
     open-in-view: true
-  #允许bean重写，解决编译时出错，本项目在添加mybaties后出错
-  main:
-    allow-bean-definition-overriding: true
+
+#注意mybatis和jpa混合使用是不能将dao接口放在同一目录，否则mybatis会出现bean同名冲突，因为会将jpa的接口也进行注入
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.pan.blog.entity
