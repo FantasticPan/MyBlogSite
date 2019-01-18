@@ -7,7 +7,6 @@ import com.pan.blog.entity.User;
 import com.pan.blog.service.BlogService;
 import com.pan.blog.service.SiteInfoService;
 import com.pan.blog.service.TagService;
-import com.pan.blog.util.DateUtil;
 import com.pan.blog.util.ResultUtil;
 import com.pan.blog.util.SecurityUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -272,7 +271,8 @@ public class BlogController {
             }
 
             blog.setUser(user);
-            blog.setCreateTime(DateUtil.dateTimeToDateString(new Date()));
+            //blog.setCreateTime(DateUtil.dateTimeToDateString(new Date()));
+            blog.setCreateTime((new Date()));
             blog.setTags(tagList);
             blog.setCatalog(catalog);
             blog.setCategory(category);
@@ -306,6 +306,7 @@ public class BlogController {
             originBlog.setSummary(blog.getSummary());
             originBlog.setContent(blog.getContent());
             originBlog.setHtmlContent(blog.getHtmlContent());
+            originBlog.setUpdateTime(new Date());
             blogService.saveBlog(originBlog);
 
             for (Tag tag1 : tagService.findAllTags()) {

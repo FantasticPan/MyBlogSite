@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -47,12 +48,12 @@ public class Blog implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(nullable = false)                       //映射为字段，值不能为空
+    @Column(nullable = false, columnDefinition = "DATE")           //映射为字段，值不能为空
     //@org.hibernate.annotations.CreationTimestamp  //由数据库自动创建时间
-    private String createTime;
+    private Date createTime;
 
-    @Column()
-    private String updateTime;
+    @Column(columnDefinition = "DATE")
+    private Date updateTime;
 
     @Column(name = "readSize", columnDefinition = "INT default 0")
     private Integer readSize;    //访问量、阅读量

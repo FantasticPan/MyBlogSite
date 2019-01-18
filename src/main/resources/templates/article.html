@@ -45,7 +45,7 @@
                     <span class="article-original article-original-green"><a href="detail.html" th:text="${blogModel.blog.category}">原创</a></span>
                     <div class="blog-info-meta pull-right">
                         <ul class="list-unstyled list-inline">
-                            <li><i class="fa fa-clock-o fa-fw"></i>发表于 [[${blogModel.blog.createTime}]]</li>
+                            <li><i class="fa fa-clock-o fa-fw"></i>发表于 [[${#dates.format(blogModel.blog.createTime,'yyyy-MM-dd')}]]</li>
                             <li><i class="fa fa-eye fa-fw"></i>
                                 <a class="pointer" data-placement="bottom">阅读量 (<num>[[${blog.readSize}]]</num>)</a>
                             </li>
@@ -95,7 +95,7 @@
                             </span>
                         </li>
                         <li>
-                            <strong>版权声明：</strong> 本站原创文章，于[[${blogModel.blog.createTime}]]由
+                            <strong>版权声明：</strong> 本站原创文章，于[[${#dates.format(blogModel.blog.createTime,'yyyy-MM-dd')}]]由
                             <a href="https://www.lipan.xyz/" target="_blank" title="作者" data-placement="bottom"><strong>李攀</strong></a>发布，转载请注明出处
                         </li>
                     </ul>

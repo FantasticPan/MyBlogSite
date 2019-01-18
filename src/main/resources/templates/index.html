@@ -73,7 +73,7 @@
                         </div>
                         <span class="title-l"></span>
                         <span class="entry-meta">
-								<span class="date" title="文章发表日期" data-placement="bottom" th:text="${blog.createTime}"><i class="fa fa-calendar-o fa-fw"></i>2018-12-01</span>
+								<span class="date" title="文章发表日期" data-placement="bottom" th:text="${#dates.format(blog.createTime,'yyyy-MM-dd')}"><i class="fa fa-calendar-o fa-fw"></i>2018-12-01</span>
 								<span class="views" title="文章阅读次数" data-placement="bottom"><i class="fa fa-eye fa-fw"></i>浏览([[${blog.readSize}]])</span>
 							</span>
                         <div class="clear"></div>
