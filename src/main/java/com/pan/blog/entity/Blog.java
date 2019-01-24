@@ -48,11 +48,11 @@ public class Blog implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(nullable = false, columnDefinition = "DATE")           //映射为字段，值不能为空
+    @Column(nullable = false, columnDefinition = "TIMESTAMP")           //映射为字段，值不能为空
     //@org.hibernate.annotations.CreationTimestamp  //由数据库自动创建时间
     private Date createTime;
 
-    @Column(columnDefinition = "DATE")
+    @Column(columnDefinition = "TIMESTAMP")
     private Date updateTime;
 
     @Column(name = "readSize", columnDefinition = "INT default 0")
