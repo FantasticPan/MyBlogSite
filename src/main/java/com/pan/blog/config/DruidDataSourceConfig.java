@@ -99,7 +99,7 @@ public class DruidDataSourceConfig {
         //创建servlet注册实体
         ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         //控制台管理用户
-        servletRegistrationBean.addInitParameter("loginUsername", "lipan");
+        servletRegistrationBean.addInitParameter("loginUsername", "李攀");
         servletRegistrationBean.addInitParameter("loginPassword", "lp19970622");
         //是否能够重置数据 禁用HTML页面上的“Reset All”功能
         servletRegistrationBean.addInitParameter("resetEnable", "true");

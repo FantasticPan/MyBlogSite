@@ -1,5 +1,6 @@
 package com.pan.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Data
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public class Blog implements Serializable {
 
     private static final long serialVersionUID = 581304626074441455L;
@@ -69,7 +71,9 @@ public class Blog implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id"))
     private Set<Tag> tags;
 
+    @Column(nullable = false)
     private String category;
+    @Column(nullable = false)
     private String catalog;
     private String image;
 

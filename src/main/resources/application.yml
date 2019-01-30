@@ -10,8 +10,8 @@ spring:
     username: root
     password: fp8oDILnjth8tN93P21ntgtjkY7Hdu//AS+ZVPe1gw90FRe4zjyXidZyYdUDA1G5Rq5O5LHfVhXbqqhtek6YsA==
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
-    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+#    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
     #druid连接池配置
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -37,30 +37,30 @@ spring:
       ddl-auto: update
     open-in-view: true
 
+  #redis配置
+  cache:
+    type: redis
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    #使用lettuce连接池
+    lettuce:
+      pool:
+        #最大连接数据库连接数,设 0 为没有限制
+        max-active: 8
+        max-wait: -1ms
+        max-idle: 8
+        min-idle: 0
+  data:
+    redis:
+      repositories:
+        enabled: false
+
 #注意mybatis和jpa混合使用是不能将dao接口放在同一目录，否则mybatis会出现bean同名冲突，因为会将jpa的接口也进行注入
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.pan.blog.entity
-
-#  #redis配置
-#  cache:
-#    type: redis
-#  redis:
-#    database: 0
-#    host: localhost
-#    port: 6379
-#    #使用lettuce连接池
-#    lettuce:
-#      pool:
-#        #最大连接数据库连接数,设 0 为没有限制
-#        max-active: 8
-#        max-wait: -1ms
-#        max-idle: 8
-#        min-idle: 0
-#  data:
-#    redis:
-#      repositories:
-#        enabled: false
 
 server:
   port: 9090

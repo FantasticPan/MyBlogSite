@@ -1,9 +1,12 @@
 package com.pan.blog.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.pan.blog.entity.Blog;
 import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.entity.Tag;
 import com.pan.blog.service.BlogService;
+import com.pan.blog.service.RedisService;
 import com.pan.blog.service.SiteInfoService;
 import com.pan.blog.service.TagService;
 import com.pan.blog.util.ResultUtil;
@@ -38,10 +41,19 @@ public class IndexController {
     private TagService tagService;
     @Autowired
     private SiteInfoService siteInfoService;
+    @Autowired
+    private RedisService redisService;
+
     @Value("${blog.profile.initial-date}")
     private String initialDate;
     @Value("${blog.profile.session-time}")
     private int sessionTime;
+    private static final String BLOG = "blog";
+    private static final String BLOG_LIST = "blogList";
+    private static final String CATALOG_LIST = "catalogList";
+    private static final String TAGS_LIST = "tagsList";
+    private static final String SITE_INFO = "siteInfo";
+    private static final String RECENT_ARTICLES = "recentArticles";
 
     @RequestMapping("/")
     public ModelAndView index(Model model,
@@ -74,7 +86,17 @@ public class IndexController {
 
         List<SiteInfo> siteInfo = siteInfoService.findAll();
 
-        List<Blog> blogList = blogService.getAllBlog();
+        //缓存操作
+        List<Blog> blogList;
+        if (redisService.hasKey(BLOG_LIST)) {
+            log.info("redis");
+            blogList = JSONArray.parseArray(redisService.get(BLOG_LIST).toString(), Blog.class);
+        } else {
+            log.info("sql");
+            blogList = blogService.getAllBlog();
+            redisService.set(BLOG_LIST, JSON.toJSONString(blogList));
+            System.out.println(JSON.toJSONString(blogList));
+        }
         List<Blog> recentArticles = blogService.getRecentArticles();
 
         model.addAttribute("blogList", blogList);

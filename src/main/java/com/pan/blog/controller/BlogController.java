@@ -5,6 +5,7 @@ import com.pan.blog.entity.SiteInfo;
 import com.pan.blog.entity.Tag;
 import com.pan.blog.entity.User;
 import com.pan.blog.service.BlogService;
+import com.pan.blog.service.RedisService;
 import com.pan.blog.service.SiteInfoService;
 import com.pan.blog.service.TagService;
 import com.pan.blog.util.ResultUtil;
@@ -45,8 +46,11 @@ public class BlogController {
     private TagService tagService;
     @Autowired
     private SiteInfoService siteInfoService;
+    @Autowired
+    private RedisService redisService;
     @Value("${blog.profile.session-time}")
     private int sessionTime;
+    private static final String BLOG_LIST = "blogList";
 
     @GetMapping({"/{username}/blog/edit"})
     @PreAuthorize("authentication.name.equals(#username)")
@@ -198,7 +202,14 @@ public class BlogController {
     @GetMapping("/delete/{id}")
     @ResponseBody
     public void deleteBlog(@PathVariable("id") Long id) {
+        //todo 删除博客同时删除为空标签
         blogService.deleteBlog(id);
+        redisService.del(BLOG_LIST);
+        for (Tag tag1 : tagService.findAllTags()) {
+            if (blogService.findBlogsByTag(tag1).isEmpty()) {
+                tagService.deleteTag(tag1);
+            }
+        }
     }
 
     @PostMapping("/publishBlog")
@@ -308,13 +319,10 @@ public class BlogController {
             originBlog.setHtmlContent(blog.getHtmlContent());
             originBlog.setUpdateTime(new Date());
             blogService.saveBlog(originBlog);
-
-            for (Tag tag1 : tagService.findAllTags()) {
-                if (blogService.findBlogsByTag(tag1).isEmpty()) {
-                    tagService.deleteTag(tag1);
-                }
-            }
         }
+
+        //删除缓存
+        redisService.del(BLOG_LIST);
 
         return ResultUtil.redirect("/");
     }
