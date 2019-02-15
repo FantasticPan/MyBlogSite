@@ -4,31 +4,32 @@ spring:
     cache: false
     mode: HTML
 
-  #数据库配置
-  datasource:
-    #JDBC配置
-    username: root
-    password: fp8oDILnjth8tN93P21ntgtjkY7Hdu//AS+ZVPe1gw90FRe4zjyXidZyYdUDA1G5Rq5O5LHfVhXbqqhtek6YsA==
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
-#    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
-    #druid连接池配置
-    type: com.alibaba.druid.pool.DruidDataSource
-    druid:
-      filters: config,stat,wall,slf4j
-      initial-size: 5
-      max-active: 20
-      min-idle: 5
-      max-wait: 60000
-      time-between-eviction-runs-millis: 60000
-      min-evictable-idle-time-millis: 300000
-      validation-query: SELECT 1 FROM DUAL
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      pool-prepared-statements: false
-      #数据库密码加密
-      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMCjBwKaNEiUeK3cEIehMB3VNNqo/oXLpNvagica8Dga8SOfVyZF83RX5/+4zDIgUBOF4elEkCN6k86pJ0JMKqECAwEAAQ==
+#  #数据库配置
+#  datasource:
+#    #JDBC配置
+#    username: root
+#    password: fp8oDILnjth8tN93P21ntgtjkY7Hdu//AS+ZVPe1gw90FRe4zjyXidZyYdUDA1G5Rq5O5LHfVhXbqqhtek6YsA==
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://119.29.233.28:3306/blog2?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+##    url: jdbc:mysql://119.29.233.28:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+#    #druid连接池配置
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      filters: config,stat,wall,slf4j
+#      initial-size: 5
+#      max-active: 20
+#      min-idle: 5
+#      max-wait: 60000
+#      time-between-eviction-runs-millis: 60000
+#      min-evictable-idle-time-millis: 300000
+#      validation-query: SELECT 1 FROM DUAL
+#      test-while-idle: true
+#      test-on-borrow: false
+#      test-on-return: false
+#      pool-prepared-statements: false
+#      #数据库密码加密
+#      connection-properties: config.decrypt=true;config.decrypt.key=MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAMCjBwKaNEiUeK3cEIehMB3VNNqo/oXLpNvagica8Dga8SOfVyZF83RX5/+4zDIgUBOF4elEkCN6k86pJ0JMKqECAwEAAQ==
+
 
   jpa:
     show-sql: false
@@ -56,6 +57,50 @@ spring:
     redis:
       repositories:
         enabled: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    master:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.231.110:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+      username: root
+      password: lp@19970622@cx
+      initialSize: 5
+      minIdle: 3
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 600000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: config,stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      useGlobalDataSourceStat: true
+
+    slave:
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.231.111:3306/blog?useSSL=false&serverTimeZone=UTC&characterEncoding=utf-8
+      username: root
+      password: lp@19970622@cx
+      initialSize: 5
+      minIdle: 3
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 600000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: config,stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+      useGlobalDataSourceStat: true
+
 
 #注意mybatis和jpa混合使用是不能将dao接口放在同一目录，否则mybatis会出现bean同名冲突，因为会将jpa的接口也进行注入
 mybatis:

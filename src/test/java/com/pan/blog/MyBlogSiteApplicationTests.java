@@ -1,25 +1,21 @@
 package com.pan.blog;
 
-import com.pan.blog.dao.mapper.BlogMapper;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class MyBlogSiteApplicationTests {
 
-    @Autowired
-    private BlogMapper blogMapper;
+    //@Autowired
+    //private BlogMapper blogMapper;
 
 	@Test
 	public void contextLoads() {
 
-        //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        //System.out.println(passwordEncoder.encode("lp19970622"));;
-        System.out.println(blogMapper.getRecentArticles());
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        System.out.println(passwordEncoder.encode("111"));
+        //System.out.println(blogMapper.getRecentArticles());
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.pan.blog.entity;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,7 +14,6 @@ import java.util.Set;
  */
 @Entity
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 public class Blog implements Serializable {
 
     private static final long serialVersionUID = 581304626074441455L;
@@ -54,7 +52,7 @@ public class Blog implements Serializable {
     //@org.hibernate.annotations.CreationTimestamp  //由数据库自动创建时间
     private Date createTime;
 
-    @Column(columnDefinition = "TIMESTAMP")
+    //@Column(columnDefinition = "TIMESTAMP")
     private Date updateTime;
 
     @Column(name = "readSize", columnDefinition = "INT default 0")
