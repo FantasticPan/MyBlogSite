@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by FantasticPan on 2018/11/25.
@@ -85,7 +86,9 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void readSizeIncrease(Long id) {
         Blog blog = this.getBlogById(id);
-        blog.setReadSize(blog.getReadSize() + 1);
+        //cas操作加1
+        AtomicInteger readSize = new AtomicInteger(blog.getReadSize());
+        blog.setReadSize(readSize.incrementAndGet());
         //this.saveBlog(blog); //使用此写法事务失效，因为此处的this指的是被代理的真实对象BlogServiceImpl的实例，不是BlogService代理对象自身
         ((BlogService) AopContext.currentProxy()).saveBlog(blog);
     }
@@ -94,7 +97,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void voteSizeInIncrease(Long id) {
         Blog blog = this.getBlogById(id);
-        blog.setVoteSize(blog.getVoteSize() + 1);
+        AtomicInteger voteSize = new AtomicInteger(blog.getVoteSize());
+        blog.setVoteSize(voteSize.incrementAndGet());
         ((BlogService) AopContext.currentProxy()).saveBlog(blog);
     }
 

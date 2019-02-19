@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by FantasticPan on 2018/11/25.
@@ -36,7 +37,8 @@ public class SiteInfoServiceImpl implements SiteInfoService {
     public void visitSizeIncrease() {
         List<SiteInfo> siteInfoList = this.findAll();
         SiteInfo siteInfo = siteInfoList.get(0);
-        siteInfo.setVisitSize(siteInfo.getVisitSize() + 1);
+        AtomicLong visitSize = new AtomicLong(siteInfo.getVisitSize());
+        siteInfo.setVisitSize(visitSize.incrementAndGet());
         ((SiteInfoService) AopContext.currentProxy()).saveSiteInfo(siteInfo);
     }
 }
