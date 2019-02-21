@@ -1,7 +1,5 @@
 package com.pan.blog.service.impl;
 
-import com.pan.blog.config.datasource.DataSource;
-import com.pan.blog.config.datasource.DynamicDataSourceGlobal;
 import com.pan.blog.dao.mapper.BlogMapper;
 import com.pan.blog.dao.repository.BlogRepository;
 import com.pan.blog.entity.Blog;
@@ -29,60 +27,60 @@ public class BlogServiceImpl implements BlogService {
     @Autowired
     private BlogMapper blogMapper;
 
-    @DataSource(DynamicDataSourceGlobal.write)
+    //@DataSource(DynamicDataSourceGlobal.write)
     @Transactional
     @Override
     public void saveBlog(Blog blog) {
         blogRepository.save(blog);
     }
 
-    @DataSource(DynamicDataSourceGlobal.write)
+    //@DataSource(DynamicDataSourceGlobal.write)
     @Transactional
     @Override
     public void deleteBlog(Long id) {
         blogRepository.deleteById(id);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Blog getBlogById(Long id) {
         return blogRepository.getOne(id);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public List<Blog> getAllBlog() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return blogRepository.findAll(sort);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Long blogNum() {
         return blogRepository.count();
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public List<Blog> findBlogsByTag(Tag tag) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return blogRepository.findBlogsByTags(tag, sort);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public List<Blog> findBlogByCatalog(String catalog) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         return blogRepository.findBlogsByCatalog(catalog, sort);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public List<String> findCatalog() {
         return blogRepository.findCatalog();
     }
 
-    @DataSource(DynamicDataSourceGlobal.write)
+    //@DataSource(DynamicDataSourceGlobal.write)
     @Override
     public void readSizeIncrease(Long id) {
         Blog blog = this.getBlogById(id);
@@ -93,7 +91,7 @@ public class BlogServiceImpl implements BlogService {
         ((BlogService) AopContext.currentProxy()).saveBlog(blog);
     }
 
-    @DataSource(DynamicDataSourceGlobal.write)
+    //@DataSource(DynamicDataSourceGlobal.write)
     @Override
     public void voteSizeInIncrease(Long id) {
         Blog blog = this.getBlogById(id);
@@ -102,31 +100,31 @@ public class BlogServiceImpl implements BlogService {
         ((BlogService) AopContext.currentProxy()).saveBlog(blog);
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Integer getVoteSize(Long id) {
         return ((BlogService) AopContext.currentProxy()).getBlogById(id).getVoteSize();
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public List<Blog> getRecentArticles() {
         return blogMapper.getRecentArticles();
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Blog getFirstArticleByReadSize() {
         return blogMapper.getFirstArticleByReadSize();
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Blog getSecondArticleByReadSize() {
         return blogMapper.getSecondArticleByReadSize();
     }
 
-    @DataSource(DynamicDataSourceGlobal.read)
+    //@DataSource(DynamicDataSourceGlobal.read)
     @Override
     public Blog getThirdArticleByReadSize() {
         return blogMapper.getThirdArticleByReadSize();
