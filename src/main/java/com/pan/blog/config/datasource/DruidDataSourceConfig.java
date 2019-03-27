@@ -91,7 +91,7 @@ public class DruidDataSourceConfig {
         return datasource;
     }
 
-    //Master-Salve配置-------------------------------------------------------------------------------------------
+//Master-Salve配置-------------------------------------------------------------------------------------------
 
 //    @Bean
 //    @ConfigurationProperties(prefix = "spring.datasource.master")
@@ -131,7 +131,7 @@ public class DruidDataSourceConfig {
 //        return dynamicDataSource;
 //    }
 
-    //Master-Salve配置-------------------------------------------------------------------------------------------
+//Master-Salve配置-------------------------------------------------------------------------------------------
 
     /**
      * 监控页面 ip + 端口/druid/index.htm
