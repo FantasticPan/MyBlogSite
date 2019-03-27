@@ -1,7 +1,7 @@
 package com.pan.blog.config.datasource;
 
 /**
- * 用ThreadLcoal管理当前数据源
+ * 用ThreadLocal管理当前数据源
  * Created by FantasticPan on 2019/2/15.
  */
 public class DynamicDataSourceHolder {

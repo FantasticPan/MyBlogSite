@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@Import({DruidDataSourceConfig.class}) //，引入数据源，解决多数据源循环依赖
+@Import({DruidDataSourceConfig.class}) //引入数据源，解决多数据源循环依赖
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class}) //exclude排除DataSourceAutoConfiguration，解决循环依赖
 @EnableAspectJAutoProxy(exposeProxy = true) //通过aop框架暴露代理对象，aopContext能够访问，配合事务AopContext.currentProxy()使用
 @MapperScan("com.pan.blog.dao.mapper")

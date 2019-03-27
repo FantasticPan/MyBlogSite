@@ -13,6 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 实现AbstractRoutingDataSource类作为数据源
+ *
  * Created by FantasticPan on 2019/2/15.
  */
 @Slf4j
@@ -82,7 +83,7 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
             //随机方式
             index = ThreadLocalRandom.current().nextInt(0, readDataSourceSize);
         }
-        log.info("数据源为：" + DynamicDataSourceHolder.getDataSource());
+        //log.info("数据源为：" + DynamicDataSourceHolder.getDataSource());
         return dynamicDataSourceGlobal.name() + index;
     }
 

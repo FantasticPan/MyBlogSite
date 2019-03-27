@@ -89,13 +89,12 @@ public class IndexController {
         //缓存操作
         List<Blog> blogList;
         if (redisService.hasKey(BLOG_LIST)) {
-            log.info("redis");
+            log.info("redis取数据");
             blogList = JSONArray.parseArray(redisService.get(BLOG_LIST).toString(), Blog.class);
         } else {
-            log.info("sql");
+            log.info("Mysql取数据");
             blogList = blogService.getAllBlog();
             redisService.set(BLOG_LIST, JSON.toJSONString(blogList));
-            System.out.println(JSON.toJSONString(blogList));
         }
         List<Blog> recentArticles = blogService.getRecentArticles();
 

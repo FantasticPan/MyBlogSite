@@ -43,7 +43,7 @@ public class DataSourceAspect {
             Method method = clazz.getMethod(methodName, parameterTypes);
             if (method != null && method.isAnnotationPresent(DataSource.class)) {
                 DataSource data = method.getAnnotation(DataSource.class);
-                log.info("value:" + data.value());
+                log.info("设置数据源的值:" + data.value());
                 //设置数据源
                 DynamicDataSourceHolder.setDataSource(data.value());
             }

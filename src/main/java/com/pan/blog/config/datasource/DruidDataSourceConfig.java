@@ -124,12 +124,14 @@ public class DruidDataSourceConfig {
 //        dynamicDataSource.setDefaultTargetDataSource(primaryDataSource());
 //
 //        //配置多数据源
-//        //Map<Object, Object> objectMap = new HashMap<>();
-//        //objectMap.put("writeDataSource", primaryDataSource());
-//        //objectMap.put("readDataSources", secondDataSource());
-//        //dynamicDataSource.setTargetDataSources(objectMap);
+//        Map<Object, Object> objectMap = new HashMap<>();
+//        objectMap.put("writeDataSource", primaryDataSource());
+//        objectMap.put("readDataSources", secondDataSource());
+//        dynamicDataSource.setTargetDataSources(objectMap);
 //        return dynamicDataSource;
 //    }
+
+    //Master-Salve配置-------------------------------------------------------------------------------------------
 
     /**
      * 监控页面 ip + 端口/druid/index.htm
