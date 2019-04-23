@@ -1,6 +1,5 @@
 package com.pan.blog.entity;
 
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import javax.persistence.*;
  * Created by FantasticPan on 2018/11/23.
  */
 @Entity
-@Data
+//@Data
 public class Authority implements GrantedAuthority {
 
     @Id
@@ -22,5 +21,21 @@ public class Authority implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return role;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

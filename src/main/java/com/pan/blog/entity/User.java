@@ -1,6 +1,5 @@
 package com.pan.blog.entity;
 
-import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,7 +17,7 @@ import java.util.Set;
  * Created by FantasticPan on 2018/12/2.
  */
 @Entity
-@Data
+//@Data
 public class User implements UserDetails {
 
     private static final long serialVersionUID = -4596324881681393224L;
@@ -39,6 +38,9 @@ public class User implements UserDetails {
     @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private Set<Authority> authorities;
+
+    @OneToMany(mappedBy = "commentUser", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Comment> comments;
 
     public void setEncodePassword(String password) {
         PasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -74,4 +76,48 @@ public class User implements UserDetails {
         return true;
     }
 
+    public User() {
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
 }

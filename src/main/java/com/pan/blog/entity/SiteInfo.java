@@ -34,4 +34,56 @@ public class SiteInfo implements Serializable {
         this.runDays = runDays;
         this.visitSize = visitSize;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getArticleNum() {
+        return articleNum;
+    }
+
+    public void setArticleNum(Long articleNum) {
+        this.articleNum = articleNum;
+    }
+
+    public int getTagNum() {
+        return tagNum;
+    }
+
+    public void setTagNum(int tagNum) {
+        this.tagNum = tagNum;
+    }
+
+    public int getCatalogNum() {
+        return catalogNum;
+    }
+
+    public void setCatalogNum(int catalogNum) {
+        this.catalogNum = catalogNum;
+    }
+
+    public int getRunDays() {
+        return runDays;
+    }
+
+    public void setRunDays(int runDays) {
+        this.runDays = runDays;
+    }
+
+    public Long getVisitSize() {
+        return visitSize;
+    }
+
+    public void setVisitSize(Long visitSize) {
+        this.visitSize = visitSize;
+    }
 }

@@ -75,6 +75,9 @@ public class Blog implements Serializable {
     private String catalog;
     private String image;
 
+    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Comment> comments;
+
     public Blog() {
         this.readSize = 0;
         this.commentSize = 0;
@@ -93,5 +96,137 @@ public class Blog implements Serializable {
         this.htmlContent = htmlContent;
         this.tags = tags;
         this.image = image;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getHtmlContent() {
+        return htmlContent;
+    }
+
+    public void setHtmlContent(String htmlContent) {
+        this.htmlContent = htmlContent;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getReadSize() {
+        return readSize;
+    }
+
+    public void setReadSize(Integer readSize) {
+        this.readSize = readSize;
+    }
+
+    public Integer getCommentSize() {
+        return commentSize;
+    }
+
+    public void setCommentSize(Integer commentSize) {
+        this.commentSize = commentSize;
+    }
+
+    public Integer getVoteSize() {
+        return voteSize;
+    }
+
+    public void setVoteSize(Integer voteSize) {
+        this.voteSize = voteSize;
+    }
+
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(String catalog) {
+        this.catalog = catalog;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

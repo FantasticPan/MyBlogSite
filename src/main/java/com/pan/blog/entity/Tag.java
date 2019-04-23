@@ -29,4 +29,24 @@ public class Tag implements Serializable {
     public Tag(@Size(min = 2, max = 30) String tagName) {
         this.tagName = tagName;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public void setTagName(String tagName) {
+        this.tagName = tagName;
+    }
 }
