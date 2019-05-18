@@ -22,4 +22,9 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> findAllCommentByBlog(Blog blog) {
         return commentRepository.findByBlog(blog);
     }
+
+    @Override
+    public void saveComment(Comment comment) {
+        commentRepository.save(comment);
+    }
 }

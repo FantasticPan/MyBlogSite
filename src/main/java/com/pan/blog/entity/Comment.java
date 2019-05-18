@@ -34,6 +34,13 @@ public class Comment implements Serializable {
     public Comment() {
     }
 
+    public Comment(String commentContent, Date commentDate, Blog blog, User commentUser) {
+        this.commentContent = commentContent;
+        this.commentDate = commentDate;
+        this.blog = blog;
+        this.commentUser = commentUser;
+    }
+
     public Long getId() {
         return id;
     }

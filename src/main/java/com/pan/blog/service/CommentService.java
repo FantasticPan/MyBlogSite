@@ -11,4 +11,6 @@ import java.util.List;
 public interface CommentService {
 
     List<Comment> findAllCommentByBlog(Blog blog);
+
+    void saveComment(Comment comment);
 }
