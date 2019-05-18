@@ -108,11 +108,11 @@ mybatis:
   type-aliases-package: com.pan.blog.entity
 
 server:
-  port: 9090
+  port: 6060
 #博客时间配置
 blog:
   profile:
-    initial-date: 2018-12-17
+    initial-date: 2018-12-01
     #session过期时间，单位：秒
     session-time: 43200
 logging:

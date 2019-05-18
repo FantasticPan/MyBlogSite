@@ -1,13 +1,19 @@
 package com.pan.blog.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by FantasticPan on 2019/4/23.
  */
 @Entity
-public class Comment {
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+public class Comment implements Serializable {
+
+    private static final long serialVersionUID = -7965748922432352505L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +23,11 @@ public class Comment {
 
     private Date commentDate;
 
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "blog_id")
     private Blog blog;
 
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, optional = false)
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, optional = false)
     @JoinColumn(name = "user_id")
     private User commentUser;
 
@@ -66,5 +72,16 @@ public class Comment {
 
     public void setCommentUser(User commentUser) {
         this.commentUser = commentUser;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "id=" + id +
+                ", commentContent='" + commentContent + '\'' +
+                ", commentDate=" + commentDate +
+                ", blog=" + blog +
+                ", commentUser=" + commentUser +
+                '}';
     }
 }

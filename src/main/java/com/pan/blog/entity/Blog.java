@@ -1,6 +1,6 @@
 package com.pan.blog.entity;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by FantasticPan on 2018/11/25.
  */
 @Entity
-@Data
+@JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
 public class Blog implements Serializable {
 
     private static final long serialVersionUID = 581304626074441455L;
@@ -74,9 +74,6 @@ public class Blog implements Serializable {
     @Column(nullable = false)
     private String catalog;
     private String image;
-
-    @OneToMany(mappedBy = "blog",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Comment> comments;
 
     public Blog() {
         this.readSize = 0;
@@ -220,13 +217,5 @@ public class Blog implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
     }
 }
