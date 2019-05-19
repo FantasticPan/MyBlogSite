@@ -108,7 +108,7 @@ mybatis:
   type-aliases-package: com.pan.blog.entity
 
 server:
-  port: 6060
+  port: 9090
 #博客时间配置
 blog:
   profile:

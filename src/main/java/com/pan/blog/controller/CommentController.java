@@ -33,8 +33,9 @@ public class CommentController {
     }
 
     @PostMapping("/comment/{id}")
+    //@PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     public void comment(@PathVariable("id") Long id,
-                        @RequestParam("comment-content") String comment_comment) {
+                        @RequestParam("content") String comment_comment) {
         String username = SecurityUtil.getCurrentUsername();
         User user = userService.findByUsername(username);
         Blog blog = blogService.getBlogById(id);
