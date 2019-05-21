@@ -26,7 +26,7 @@ public class CommentController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/getComments/{id}")
     public List<Comment> getComments(@PathVariable("id") Long id) {
         Blog blog = blogService.getBlogById(id);
         return commentService.findAllCommentByBlog(blog);
@@ -41,5 +41,10 @@ public class CommentController {
         Blog blog = blogService.getBlogById(id);
         Comment comment = new Comment(comment_comment, new Date(), blog, user);
         commentService.saveComment(comment);
+    }
+
+    @PostMapping("/commentVote/{commentId}")
+    public void commentVote(@PathVariable("commentId")Long id) {
+
     }
 }

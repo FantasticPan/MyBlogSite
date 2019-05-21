@@ -1,6 +1,7 @@
 package com.pan.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.util.Date;
  */
 @Entity
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer", "handler"})
+@DynamicInsert
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = -7965748922432352505L;
@@ -30,6 +32,11 @@ public class Comment implements Serializable {
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User commentUser;
+
+    @Column(columnDefinition = "INT default 0")
+    private Integer voteSize;
+    @Column(columnDefinition = "INT default 0")
+    private Integer stepSize;
 
     public Comment() {
     }
@@ -79,6 +86,22 @@ public class Comment implements Serializable {
 
     public void setCommentUser(User commentUser) {
         this.commentUser = commentUser;
+    }
+
+    public Integer getVoteSize() {
+        return voteSize;
+    }
+
+    public void setVoteSize(Integer voteSize) {
+        this.voteSize = voteSize;
+    }
+
+    public Integer getStepSize() {
+        return stepSize;
+    }
+
+    public void setStepSize(Integer stepSize) {
+        this.stepSize = stepSize;
     }
 
     @Override

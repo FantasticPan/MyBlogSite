@@ -13,4 +13,8 @@ public interface CommentService {
     List<Comment> findAllCommentByBlog(Blog blog);
 
     void saveComment(Comment comment);
+
+    void commentVoteSizeIncrease(Long id);
+
+    void commentStepSizeIncrease(Long id);
 }
